@@ -6,6 +6,50 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+    <ion-content class="has-header" padding="true">
+        <ion-list>
+
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="../img/cake.svg">
+              </ion-thumbnail>
+              <h2>Alimentos</h2>
+              <p>{{qntA}} projetos ativos></p>
+              <button ion-button clear item-end>Ver</button>
+            </ion-item>
+            <ion-item>
+                <ion-thumbnail item-start>
+                  <img src="../img/waiter1.svg">
+                </ion-thumbnail>
+                <h2>Profissionais</h2>
+                <p>{{qntP}} projetos ativos></p>
+                <button ion-button clear item-end>Ver</button>
+              </ion-item>
+              <ion-item>
+                  <ion-thumbnail item-start>
+                    <img src="../img/makeover.svg">
+                  </ion-thumbnail>
+                  <h2 danger>Saúde &amp; Beleza</h2>
+                  <p>{{qnt}} projetos ativos></p>
+                  <button ion-button clear item-end>Ver</button>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="../img/pencil.svg">
+                    </ion-thumbnail>
+                    <h2>Arte &amp; Manufatura</h2>
+                    <p>{{qnt}} projetos ativos></p>
+                    <button ion-button clear item-end>Ver</button>
+                  </ion-item>
+                  <ion-item>
+                      <ion-thumbnail item-start>
+                        <img src="../img/folder.svg">
+                      </ion-thumbnail>
+                      <h2>Outros</h2>
+                      <p>{{qnt}} projetos ativos></p>
+                      <button ion-button clear item-end>Ver</button>
+                    </ion-item>
+
+          </ion-list>
 
 </ion-content>
