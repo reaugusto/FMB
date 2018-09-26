@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
-import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-servicos',
@@ -14,7 +13,7 @@ export class ServicosPage {
   }
 
   abrepagina(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(PerfilPage);
   }
 
 }

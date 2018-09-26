@@ -6,6 +6,7 @@ import { MensagensPage } from '../mensagens/mensagens';
 import { PerfilPage } from '../perfil/perfil';
 
 @Component({
+  selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
