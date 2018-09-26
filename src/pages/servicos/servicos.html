@@ -7,6 +7,19 @@
 </ion-header>
 
     <ion-content class="has-header" padding="true">
+        <ion-list> 
+          <ion-item>
+          <ion-label>Estado</ion-label>
+        <ion-select [(ngModel)]="estado">
+          <ion-option value="MG">Minas Gerais</ion-option>
+          <ion-option value="SP">São Paulo</ion-option>
+          <ion-option value="RJ">Rio de Janeiro</ion-option>
+          <ion-option value="PR">Paraná</ion-option>
+          <ion-option value="MT">Mato Grosso</ion-option>
+          <ion-option value="DF">Distrito Federal</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
         <ion-list>
 
             <ion-item>
