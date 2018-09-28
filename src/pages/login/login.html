@@ -14,12 +14,42 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <img src="../../assets/imgs/logo.png">
-    <form>
-      <input type="email" >
-      <input type="hidden">
-    </form>
+  <ion-list text-center no-lines>
+    <ion-item class="image">
+      <img src="../../assets/cake.svg">
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button outline item-end icon-start>
+        <ion-icon name="person" ></ion-icon>
+        Conectar
+    </button>
+    <button ion-button outline item-end icon-start>
+        <ion-icon name="person-add" ></ion-icon>
+      Cadastrar
+    </button>
+    <ion-item text-center class="ccom">
+      <h2>Conectar com:</h2>
+    
+    <button ion-button outline item-end icon-start>
+        <ion-icon name="logo-facebook" ></ion-icon>
+    </button>
+    <button ion-button outline item-end icon-start>
+        <ion-icon name="logo-twitter" ></ion-icon>
+    </button>
+    <button ion-button outline item-end icon-start>
+        <ion-icon name="logo-google" ></ion-icon>
+    </button>
+  </ion-item>
   </ion-list>
 
 </ion-content>

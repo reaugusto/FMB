@@ -1,3 +1,16 @@
 page-login {
-
+    .image{
+        width: auto;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+    }
+    img{
+        width: 60%;
+    }
+    .ccom{
+        padding: 10px;
+    }
 }
