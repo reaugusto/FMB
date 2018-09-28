@@ -9,6 +9,9 @@ import { MensagensPage } from '../pages/mensagens/mensagens';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { CadastrarPage } from '../pages/cadastrar/cadastrar';
+
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +24,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MensagensPage,
     PerfilPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CadastrarPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MensagensPage,
     PerfilPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    CadastrarPage
   ],
   providers: [
     StatusBar,

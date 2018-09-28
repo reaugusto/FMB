@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CadastrarPage } from '../cadastrar/cadastrar';
 
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the CadastrarPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { CadastrarPage } from '../cadastrar/cadastrar';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-cadastrar',
+  templateUrl: 'cadastrar.html',
 })
-export class LoginPage {
+export class CadastrarPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  chamacadastrar(){
-    this.navCtrl.push(CadastrarPage);
+    console.log('ionViewDidLoad CadastrarPage');
   }
 
 }

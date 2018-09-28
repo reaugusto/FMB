@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>Facil + Barato</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,8 +15,8 @@
 
 <ion-content padding>
   <ion-list text-center no-lines>
-    <ion-item class="image">
-      <img src="../../assets/cake.svg">
+    <ion-item text-center>
+      <ion-img src="../../assets/cake.svg" width="120px" height="120px"></ion-img>
     </ion-item>
 
     <ion-item>
@@ -29,24 +29,24 @@
       <ion-input type="password"></ion-input>
     </ion-item>
 
-    <button ion-button outline item-end icon-start>
+    <button ion-button outline item-end icon-start class="b1">
         <ion-icon name="person" ></ion-icon>
         Conectar
     </button>
-    <button ion-button outline item-end icon-start>
+    <button ion-button outline item-end icon-start class="b1" (click)="chamacadastrar()">
         <ion-icon name="person-add" ></ion-icon>
       Cadastrar
     </button>
     <ion-item text-center class="ccom">
       <h2>Conectar com:</h2>
     
-    <button ion-button outline item-end icon-start>
+    <button ion-button outline round item-end icon-start>
         <ion-icon name="logo-facebook" ></ion-icon>
     </button>
-    <button ion-button outline item-end icon-start>
+    <button ion-button outline round item-end icon-start>
         <ion-icon name="logo-twitter" ></ion-icon>
     </button>
-    <button ion-button outline item-end icon-start>
+    <button ion-button outline round item-end icon-start>
         <ion-icon name="logo-google" ></ion-icon>
     </button>
   </ion-item>
