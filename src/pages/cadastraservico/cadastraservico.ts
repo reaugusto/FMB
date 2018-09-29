@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 
 /**
- * Generated class for the CadastrarPage page.
+ * Generated class for the CadastraservicoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
-  selector: 'page-cadastrar',
-  templateUrl: 'cadastrar.html',
+  selector: 'page-cadastraservico',
+  templateUrl: 'cadastraservico.html',
 })
-export class CadastrarPage {
+export class CadastraservicoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastrarPage');
-  }
-
-  cancel(){
-    this.navCtrl.setRoot(LoginPage);
+    console.log('ionViewDidLoad CadastraservicoPage');
   }
 
 }

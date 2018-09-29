@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CadastrarPage } from '../cadastrar/cadastrar';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,8 +24,12 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  chamacadastrar(){
-    this.navCtrl.push(CadastrarPage);
+  cadastrar(){
+    this.navCtrl.setRoot(CadastrarPage);
   }
+  login(){
+    //fazer a conexão com firebase
+    this.navCtrl.setRoot(TabsPage);
 
+  }
 }

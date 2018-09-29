@@ -10,6 +10,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { CadastrarPage } from '../pages/cadastrar/cadastrar';
+import { CadastraservicoPage } from '../pages/cadastraservico/cadastraservico';
 
 
 
@@ -25,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PerfilPage,
     TabsPage,
     LoginPage,
-    CadastrarPage
+    CadastrarPage,
+    CadastraservicoPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PerfilPage,
     TabsPage,
     LoginPage,
-    CadastrarPage
+    CadastrarPage,
+    CadastraservicoPage
   ],
   providers: [
     StatusBar,
