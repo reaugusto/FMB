@@ -33,13 +33,13 @@ export class CadastraservicoPage {
   createForm(){
     this.form = this.formBuilder.group({
       key: [this.servico.key],
-      id_servico: [this.servico.id_servico, Validators.required],
-      categoria: [this.servico.categoria, Validators.required],
-      detalhes: [this.servico.detalhes, Validators.required],
-      orcamento: [this.servico.orcamento, Validators.required],
-      tipo: [this.servico.tipo, Validators.required],
-      titulo: [this.servico.titulo, Validators.required],
-      cpf: [this.servico.cpf, Validators.required],
+      id_servico: [this.servico.id_servico],
+      categoria: [this.servico.categoria],
+      detalhes: [this.servico.detalhes],
+      orcamento: [this.servico.orcamento],
+      tipo: [this.servico.tipo],
+      titulo: [this.servico.titulo],
+      cpf: [this.servico.cpf],
       id_proposta: [this.servico.id_proposta],
     })
   }

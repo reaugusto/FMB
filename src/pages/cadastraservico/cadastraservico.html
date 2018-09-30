@@ -7,40 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastraservico</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content class="has-header" padding="true">
-  <ion-list text-center>
-    <ion-item>
-      <ion-label>Categoria</ion-label>
-      <ion-select [(ngModel)]="categoria">
-        <ion-option value="alimentos">Alimentos</ion-option>
-        <ion-option value="profissionais">Profissionais</ion-option>
-        <ion-option value="saudeebeleza">Saude &amp; Beleza</ion-option>
-        <ion-option value="arteemanufatura">Arte &amp; Manufatura</ion-option>
-        <ion-option value="outros">Outros</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Titulo:</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Orçamento(valor máximo):</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Titulo:</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Descrição:</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
+    <form [formGroup]="form">
+        <ion-item>
+          <ion-label stacked>Categoria</ion-label>
+          <ion-input type="text" formControlName="categoria"></ion-input>
+        </ion-item>
+     
+        <ion-item>
+          <ion-label stacked>Detalhes</ion-label>
+          <ion-input type="text" formControlName="detalhes"></ion-input>
+        </ion-item>
+     
+        <div padding>
+          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+            <ion-icon name="create" ></ion-icon>
+            Salvar
+          </button>
+        </div>
+      </form>
+
+  <!-- <ion-list text-center>
     <button ion-button outline item-end icon-start class="b1">
         <ion-icon name="create" ></ion-icon>
       Cadastrar
@@ -49,5 +42,5 @@
         <ion-icon name="close-circle" ></ion-icon>
       Cancelar
     </button>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

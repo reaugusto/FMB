@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { CadastraservicoPage } from '../cadastraservico/cadastraservico';
+import { MostrarservicosPage } from '../mostrarservicos/mostrarservicos';
 
 @Component({
   selector: 'page-servicos',
@@ -14,10 +14,10 @@ export class ServicosPage {
   }
 
   abrepagina(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push(MostrarservicosPage);
   }
 
-  cadastraservico(){
+  cadastraServico(){
     this.navCtrl.push(CadastraservicoPage);
   }
 }

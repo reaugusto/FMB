@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { CadastrarPage } from '../pages/cadastrar/cadastrar';
 import { CadastraservicoPage } from '../pages/cadastraservico/cadastraservico';
+import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -29,7 +30,8 @@ import { ServicoProvider } from '../providers/servico/servico';
     TabsPage,
     LoginPage,
     CadastrarPage,
-    CadastraservicoPage
+    CadastraservicoPage,
+    MostrarservicosPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { ServicoProvider } from '../providers/servico/servico';
     TabsPage,
     LoginPage,
     CadastrarPage,
-    CadastraservicoPage
+    CadastraservicoPage,
+    MostrarservicosPage
   ],
   providers: [
     StatusBar,

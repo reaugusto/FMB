@@ -12,9 +12,9 @@ export class ServicoProvider {
       .snapshotChanges()
       .map(changes => {
       return changes.map(s => ({
-          key: s.key,
-          data: s.payload.val()
-        }));
+        key: s.key,
+        data: s.payload.val()
+      }));
     })
   }
 
@@ -31,12 +31,12 @@ export class ServicoProvider {
     return new Promise((resolve, reject) => {
       if (servico.key){
         this.db.list(this.PATH)
-        .update(servico.key, { name: servico.name, tel: servico.tel })
+        .update(servico.key, { categoria: servico.categoria, detalhes: servico.detalhes })
         .then(() => resolve())
         .catch((e) => reject(e));
       }else{
         this.db.list(this.PATH)
-        .push({ name: servico.name, tel: servico.tel })
+        .push({ categoria: servico.categoria, detalhes: servico.detalhes })
         .then((result: any) => resolve(result.key))
       }
 
