@@ -17,10 +17,10 @@
   <ion-list>
   <ion-item-sliding *ngFor="let servico of servicos | async">
     
-    <ion-item>
+    <button ion-item clear>
       <h1>{{ servico.categoria }}</h1>
       <p>{{ servico.detalhes }}</p>
-    </ion-item>
+    </button>
 
   </ion-item-sliding>
   </ion-list>

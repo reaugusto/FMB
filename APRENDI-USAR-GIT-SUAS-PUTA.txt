@@ -1,0 +1,8 @@
+//quando der clone
+npm install
+
+//atualizacao do rxjs 
+npm install rxjs@^6.0.0 --save
+npm install --save rxjs-compat
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';

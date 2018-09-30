@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ServicoProvider {
@@ -12,8 +14,7 @@ export class ServicoProvider {
       .snapshotChanges()
       .map(changes => {
       return changes.map(s => ({
-        key: s.key,
-        data: s.payload.val()
+        key: s.key,...s.payload.val()
       }));
     })
   }
