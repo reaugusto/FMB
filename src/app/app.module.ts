@@ -12,10 +12,12 @@ import { LoginPage } from '../pages/login/login';
 import { CadastrarPage } from '../pages/cadastrar/cadastrar';
 import { CadastraservicoPage } from '../pages/cadastraservico/cadastraservico';
 
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ServicoProvider } from '../providers/servico/servico';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCtvA9x1M-qamTHfBJzpJDo8JoG8n1b1SA",
+      authDomain: "facilmbarato.firebaseapp.com",
+      databaseURL: "https://facilmbarato.firebaseio.com",
+      projectId: "facilmbarato",
+      storageBucket: "facilmbarato.appspot.com",
+      messagingSenderId: "893120931333"
+    }),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +59,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ServicoProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
