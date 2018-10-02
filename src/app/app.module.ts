@@ -15,10 +15,12 @@ import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServicoProvider } from '../providers/servico/servico';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ServicoProvider } from '../providers/servico/servico';
       storageBucket: "facilmbarato.appspot.com",
       messagingSenderId: "893120931333"
     }),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +66,8 @@ import { ServicoProvider } from '../providers/servico/servico';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ServicoProvider
+    ServicoProvider,
+    AuthProvider
   ]
 })
 export class AppModule { }
