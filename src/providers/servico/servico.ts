@@ -32,12 +32,30 @@ export class ServicoProvider {
     return new Promise((resolve, reject) => {
       if (servico.key){
         this.db.list(this.PATH)
-        .update(servico.key, { categoria: servico.categoria, detalhes: servico.detalhes })
+        .update(servico.key, {
+          id_servico: servico.id_servico,
+          categoria: servico.categoria,
+          detalhes: servico.detalhes,
+          orcamento: servico.orcamento,
+          tipo: servico.tipo,
+          titulo: servico.titulo,
+          cpf: servico.cpf,
+          id_proposta: servico.id_proposta
+        })
         .then(() => resolve())
         .catch((e) => reject(e));
       }else{
         this.db.list(this.PATH)
-        .push({ categoria: servico.categoria, detalhes: servico.detalhes })
+        .push({
+          id_servico: servico.id_servico,
+          categoria: servico.categoria,
+          detalhes: servico.detalhes,
+          orcamento: servico.orcamento,
+          tipo: servico.tipo,
+          titulo: servico.titulo,
+          cpf: servico.cpf,
+          id_proposta: servico.id_proposta
+        })
         .then((result: any) => resolve(result.key))
       }
 

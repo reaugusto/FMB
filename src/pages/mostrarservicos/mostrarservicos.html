@@ -15,13 +15,19 @@
 
 <ion-content padding>
   <ion-list>
-  <ion-item-sliding *ngFor="let servico of servicos | async">
-    
-    <button ion-item clear>
-      <h1>{{ servico.categoria }}</h1>
-      <p>{{ servico.detalhes }}</p>
-    </button>
+    <ion-item-sliding *ngFor="let servico of servicos | async">
 
-  </ion-item-sliding>
+      <button ion-item clear>
+        <h1>{{ servico.categoria }}</h1>
+        <p>{{ servico.id_servico }}</p>
+        <p>{{ servico.detalhes }}</p>
+        <p>{{ servico.orcamento }}</p>
+        <p>{{ servico.tipo }}</p>
+        <p>{{ servico.titulo }}</p>
+        <p>{{ servico.cpf }}</p>
+        <p>{{ servico.id_proposta }}</p>
+      </button>
+
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

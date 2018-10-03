@@ -24,7 +24,22 @@
           <ion-label stacked>Detalhes</ion-label>
           <ion-input type="text" formControlName="detalhes"></ion-input>
         </ion-item>
-     
+        
+        <ion-item>
+          <ion-label stacked>Orçamento</ion-label>
+          <ion-input type="text" formControlName="orcamento"></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label stacked>Tipo (Subcategoria)</ion-label>
+          <ion-input type="text" formControlName="tipo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Título</ion-label>
+          <ion-input type="text" formControlName="titulo"></ion-input>
+        </ion-item>
+
         <div padding>
           <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">
             <ion-icon name="create" ></ion-icon>
@@ -32,6 +47,10 @@
           </button>
         </div>
       </form>
+      <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
+        <ion-icon name="close-circle" ></ion-icon>
+      Cancelar
+    </button>
 
   <!-- <ion-list text-center>
     <button ion-button outline item-end icon-start class="b1">

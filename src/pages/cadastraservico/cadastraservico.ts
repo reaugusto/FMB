@@ -22,25 +22,25 @@ export class CadastraservicoPage {
     this.setupPageTitle();
   }
 
-  /*abrepagina(){
-    this.navCtrl.push(LoginPage);
-  }*/
+  cancel(){
+    this.navCtrl.pop();
+  }
 
   private setupPageTitle(){
-    this.title = this.navParams.data.servico ? 'Alterando contato' : 'Novo contato';
+    this.title = this.navParams.data.servico ? 'Alterar serviço' : 'Novo serviço';
   }
   
   createForm(){
     this.form = this.formBuilder.group({
       key: [this.servico.key],
-      id_servico: [this.servico.id_servico],
+      id_servico: [this.servico.id_servico],//recebe uma key
       categoria: [this.servico.categoria],
       detalhes: [this.servico.detalhes],
       orcamento: [this.servico.orcamento],
       tipo: [this.servico.tipo],
       titulo: [this.servico.titulo],
-      cpf: [this.servico.cpf],
-      id_proposta: [this.servico.id_proposta],
+      cpf: [this.servico.cpf],//recebe o cpf do usuario
+      id_proposta: [this.servico.id_proposta],//tirar isso daqui (deixar apenas para evitar erros por enquanto)
     })
   }
 
