@@ -1,5 +1,6 @@
 //quando der clone
 npm install
+npm install firebase angularfire2 --save
 
 //atualizacao do rxjs 
 npm install rxjs@^6.0.0 --save
