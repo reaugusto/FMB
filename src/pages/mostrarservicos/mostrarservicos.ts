@@ -19,10 +19,14 @@ import 'rxjs/add/operator/map';
 })
 export class MostrarservicosPage {
   servicos: Observable<any>;
-
+  categoriaServ:any;
   constructor(public navCtrl: NavController, private provider: ServicoProvider,
-    private toast: ToastController) {
-      this.servicos = this.provider.getAll();
+    private toast: ToastController, public navParams: NavParams) {
+      this.categoriaServ = this.navParams.get("categoriaServ");
+      console.log(this.categoriaServ);
+
+      this.servicos = this.provider.getAll(this.categoriaServ);
+      
   }
 
 

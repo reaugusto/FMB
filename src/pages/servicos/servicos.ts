@@ -8,13 +8,13 @@ import { MostrarservicosPage } from '../mostrarservicos/mostrarservicos';
   templateUrl: 'servicos.html'
 })
 export class ServicosPage {
-
   constructor(public navCtrl: NavController) {
 
   }
 
-  abrepagina(){
-    this.navCtrl.push(MostrarservicosPage);
+  abrepagina(categoriaServ:any){
+    console.log(categoriaServ)
+    this.navCtrl.push(MostrarservicosPage, {categoriaServ});
   }
 
   cadastraServico(){
