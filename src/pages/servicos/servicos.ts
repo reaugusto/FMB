@@ -12,7 +12,7 @@ export class ServicosPage {
 
   }
 
-  abrepagina(categoriaServ:any){
+  abrepagina(categoriaServ:String){
     console.log(categoriaServ)
     this.navCtrl.push(MostrarservicosPage, {categoriaServ});
   }

@@ -19,6 +19,16 @@ export class ServicoProvider {
     })
   }
 
+  getAllSub(subcategoriaServ){ //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
+    return this.db.list(this.PATH, ref => ref.orderByChild("tipo").equalTo(subcategoriaServ))
+      .snapshotChanges()
+      .map(changes => {
+      return changes.map(s => ({
+        key: s.key,...s.payload.val()
+      }));
+    })
+  }
+
 /*  get(key: string){ // retorna um unico objeto referenciado por 'key' do caminho 'PATH' no firebase
     return this.db.object(this.PATH + key)
     .snapshotChanges()

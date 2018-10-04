@@ -15,8 +15,10 @@
 
 <ion-content padding>
   <ion-list>
+      <button ion-button (click)="alteraSub('3')">
+          teste
+        </button>
     <ion-item-sliding *ngFor="let servico of servicos | async">
-
       <button ion-item clear>
         <h1>{{ servico.categoria }}</h1>
         <p>{{ servico.id_servico }}</p>
