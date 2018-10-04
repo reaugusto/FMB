@@ -12,6 +12,60 @@ export class CadastraservicoPage {
   title: string;
   form: FormGroup;
   servico: any;
+  sub: any[];
+  public categoria: string;
+
+  alimentos: any[] = [
+    "bolo",
+    "pão",
+    "salgados",
+    "torta",
+    "doces",
+    "lanches",
+    "trufas",
+  ];
+  profissionais: string[] = [
+    "Bartender",
+    "DJ",
+    "Segurança",
+    "Garçom",
+    "Cerimonialista",
+    "Cozinheiro",
+    "Limpeza",
+    "Pedreiro",
+    "Pintor",
+    "Fotógrafo",
+    "Montador de imóveis",
+    "Capinador",
+    "Marceneiro",
+    "Entregador",
+    "Jardineiro",
+  ];
+
+  saudeebeleza: string[] = [
+    "Depilação",
+    "Manicure e Pedicure",
+    "Maquiadora",
+    "Cabeleireiro",
+    "Massagem",
+    "Sobrancelha",
+    "Queratinização"
+  ];
+
+  arteemanufatura: string[] = [
+    "Bordadeira",
+    "Pintor",
+    "brinde e personalização",
+    "Costureira",
+    "Passadeira",
+    "Lavadeira",
+    "Carpinteiro",
+    "Decoração",
+    "Floricultura",
+    "Grafiteiro"
+  ]
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private formBuilder: FormBuilder, private provider: ServicoProvider,
@@ -22,15 +76,15 @@ export class CadastraservicoPage {
     this.setupPageTitle();
   }
 
-  cancel(){
+  cancel() {
     this.navCtrl.pop();
   }
 
-  private setupPageTitle(){
+  private setupPageTitle() {
     this.title = this.navParams.data.servico ? 'Alterar serviço' : 'Novo serviço';
   }
-  
-  createForm(){
+
+  createForm() {
     this.form = this.formBuilder.group({
       key: [this.servico.key],
       id_servico: [this.servico.id_servico],//recebe uma key
@@ -44,17 +98,31 @@ export class CadastraservicoPage {
     })
   }
 
-  onSubmit(){
-    if(this.form.valid){
+  onSubmit() {
+    if (this.form.valid) {
       this.provider.save(this.form.value)
-      .then(() => {
-        this.toast.create({ message: 'Servico criado com sucesso', duration: 3000 }).present();
-        this.navCtrl.pop();
-      })
-      .catch((e) => {
-        this.toast.create({ message: 'Erro ao tentar criar servico', duration: 3000 }).present();
-        console.error(e);
-      });
+        .then(() => {
+          this.toast.create({ message: 'Servico criado com sucesso', duration: 3000 }).present();
+          this.navCtrl.pop();
+        })
+        .catch((e) => {
+          this.toast.create({ message: 'Erro ao tentar criar servico', duration: 3000 }).present();
+          console.error(e);
+        });
+    }
+  }
+
+  alteraSubcategaria() {
+    console.log(this.categoria);
+    if (this.categoria == "alimentos") {
+      this.sub = this.alimentos;
+    } else if (this.categoria == "profissionais") {
+      this.sub = this.profissionais;
+    } else if (this.categoria == "saudeebeleza") {
+      this.sub = this.saudeebeleza;
+    } else if (this.categoria == "arteemanufatura") {
+      this.sub = this.arteemanufatura;
+
     }
   }
 

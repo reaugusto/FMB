@@ -13,44 +13,48 @@
 </ion-header>
 
 
-<ion-content class="has-header" padding="true">
-    <form [formGroup]="form">
-        <ion-item>
-          <ion-label stacked>Categoria</ion-label>
-          <ion-input type="text" formControlName="categoria"></ion-input>
-        </ion-item>
-     
-        <ion-item>
-          <ion-label stacked>Detalhes</ion-label>
-          <ion-input type="text" formControlName="detalhes"></ion-input>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label stacked>Orçamento</ion-label>
-          <ion-input type="text" formControlName="orcamento"></ion-input>
-        </ion-item> 
+<ion-content class="has-header" padding="true" text-center>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select id="categoria" [(ngModel)]="categoria" formControlName="categoria" (ionChange)="alteraSubcategaria( this.value );">
+        <ion-option value="alimentos">Alimentos</ion-option>
+        <ion-option value="profissionais">Profissionais</ion-option>
+        <ion-option value="saudeebeleza">Saúde &amp; Beleza</ion-option>
+        <ion-option value="arteemanufatura">Arte &amp; Manufatura</ion-option>
+        <ion-option value="outros">Outros</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Subcategoria</ion-label>
+      <ion-select formControlName="tipo" [(ngModel)]="subcategoria">
+        <ion-option *ngFor="let subcat of sub" [value]="subcat.valor">{{ subcat }}</ion-option>
+      </ion-select>
+    </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Tipo (Subcategoria)</ion-label>
-          <ion-input type="text" formControlName="tipo"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label stacked>Título</ion-label>
+      <ion-input type="text" formControlName="titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Orçamento</ion-label>
+        <ion-input type="number" formControlName="orcamento"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label stacked>Detalhes</ion-label>
+      <ion-textarea type="text" formControlName="detalhes"></ion-textarea>
+    </ion-item>
 
-        <ion-item>
-          <ion-label stacked>Título</ion-label>
-          <ion-input type="text" formControlName="titulo"></ion-input>
-        </ion-item>
-
-        <div padding>
-          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">
-            <ion-icon name="create" ></ion-icon>
-            Salvar
-          </button>
-        </div>
-      </form>
-      <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
-        <ion-icon name="close-circle" ></ion-icon>
-      Cancelar
-    </button>
+      <button ion-button outline item-end icon-start class="b1" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+        <ion-icon name="create"></ion-icon>
+        Salvar
+      </button>
+    <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
+        <ion-icon name="close-circle"></ion-icon>
+        Cancelar
+      </button>
+  </form>
+  
 
   <!-- <ion-list text-center>
     <button ion-button outline item-end icon-start class="b1">

@@ -30,7 +30,7 @@ export class LoginPage {
   }
 
   cadastrar(){
-    this.navCtrl.setRoot(CadastrarPage);
+    this.navCtrl.push(CadastrarPage);
   }
 
   signIn(){

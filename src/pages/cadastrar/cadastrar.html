@@ -14,9 +14,13 @@
 
 
 <ion-content padding>
+<ion-list no-lines>
+    <ion-item text-center>
+        <ion-img src="../../assets/cake.svg" width="120px" height="120px"></ion-img>
+      </ion-item>
 
-    <form #form="ngForm" novalidate>
-        <ion-list>
+    <form #form="ngForm" novalidate text-center>
+
           <ion-item>
             <ion-label stacked>E-mail</ion-label>
             <ion-input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
@@ -32,78 +36,27 @@
           <ion-item *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
             O campo é obrigatório
           </ion-item>
-    
-        </ion-list>
-    
-        <button ion-button block color="primary" [disabled]="!form.form.valid" (click)="registrar()">
+        <button ion-button item-end icon-start class="b1" color="primary" [disabled]="!form.form.valid" (click)="registrar()">
+          <ion-icon name="person-add" ></ion-icon>
           Criar conta
         </button>
-      </form>
-
-    <!-- <ion-list text-center no-lines>
-        <ion-item text-center>
-          <ion-img src="../../assets/cake.svg" width="120px" height="120px"></ion-img>
-        </ion-item>
-        <form #form="ngForm" novalidate>
-    
-        <ion-item>
-            <ion-label stacked>Nome Completo</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-
-        <ion-item>
-          <ion-label stacked>E-mail</ion-label>
-          <ion-input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
-        </ion-item>
-        <ion-item *ngIf="email.errors && (email.dirty || email.touched)" class="text-danger">
-          O campo é obrigatório
-        </ion-item>
-
-      
-        <ion-item>
-          <ion-label stacked>Senha</ion-label>
-          <ion-input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required></ion-input>
-        </ion-item>
-        <ion-item *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
-          O campo é obrigatório
-        </ion-item>
-
-
-        <ion-item>
-            <ion-label stacked>Repita a senha</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item> -->
-        <!-- <button ion-button outline item-end icon-start class="b1" (click)="registrar()">
-            <ion-icon name="person-add" ></ion-icon>
-          Cadastrar
-        </button>
         <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
-            <ion-icon name="close-circle" ></ion-icon>
-          Cancelar
-        </button>
-        <ion-item text-center class="ccom">
+          <ion-icon name="close-circle" ></ion-icon>
+        Cancelar
+      </button>
+      </form>
+      <br>
+      <ion-item text-center class="ccom">
           <h2>Cadastrar com:</h2>
-        
-        <button ion-button outline round item-end icon-start>
+        <button ion-button outline round large>
             <ion-icon name="logo-facebook" ></ion-icon>
         </button>
-        <button ion-button outline round item-end icon-start>
+        <button ion-button outline round large>
             <ion-icon name="logo-twitter" ></ion-icon>
         </button>
-        <button ion-button outline round item-end icon-start>
+        <button ion-button outline round large>
             <ion-icon name="logo-google" ></ion-icon>
         </button>
       </ion-item>
-
-      <button ion-button outline item-end icon-start class="b1" (click)="registrar()">
-        <ion-icon name="person-add" ></ion-icon>
-      Cadastrar
-    </button>
-    <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
-        <ion-icon name="close-circle" ></ion-icon>
-      Cancelar
-    </button>
-  </ion-list>
-  </form> -->
-
+    </ion-list>
 </ion-content>

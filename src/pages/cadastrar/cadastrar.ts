@@ -35,7 +35,7 @@ export class CadastrarPage {
       this.authProvider.createUser(this.user)
       .then((user:any) =>{
 
-        toast.setMessage('Usuario cadastradocom sucesso');
+        toast.setMessage('Usuario cadastrado com sucesso');
         toast.present();
 
         this.navCtrl.setRoot(LoginPage);//para alterar a entrada mexer AQUI
@@ -57,7 +57,7 @@ export class CadastrarPage {
   }
 
   cancel(){
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.pop();
   }
 
 }
