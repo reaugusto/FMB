@@ -15,7 +15,13 @@
 
 <ion-content padding>
   <ion-list>
-      <button ion-button (click)="alteraSub('3')">
+      <ion-item>
+          <ion-label>Subcategoria</ion-label>
+          <ion-select id="subcategoriaServ" [(ngModel)]="subcategoriaServ" (ionChange)="alteraSub(this.value);">
+            <ion-option *ngFor="let subcat of sub" [value]="subcat">{{ subcat }}</ion-option>
+          </ion-select>
+        </ion-item>
+      <button ion-button (click)="alteraSub('Alimentos')">
           teste
         </button>
     <ion-item-sliding *ngFor="let servico of servicos | async">

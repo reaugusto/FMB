@@ -114,13 +114,13 @@ export class CadastraservicoPage {
 
   alteraSubcategaria() {
     console.log(this.categoria);
-    if (this.categoria == "alimentos") {
+    if (this.categoria == "Alimentos") {
       this.sub = this.alimentos;
-    } else if (this.categoria == "profissionais") {
+    } else if (this.categoria == "Profissionais") {
       this.sub = this.profissionais;
-    } else if (this.categoria == "saudeebeleza") {
+    } else if (this.categoria == "Saudeebeleza") {
       this.sub = this.saudeebeleza;
-    } else if (this.categoria == "arteemanufatura") {
+    } else if (this.categoria == "Arteemanufatura") {
       this.sub = this.arteemanufatura;
 
     }

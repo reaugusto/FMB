@@ -20,8 +20,63 @@ import 'rxjs/add/operator/map';
 export class MostrarservicosPage {
   servicos: Observable<any>;
 
-  categoriaServ:any;
-  public subcategoriaServ:String;
+  categoriaServ:string;
+  public subcategoriaServ:string;
+  sub: any[];
+
+  alimentos: any[] = [
+    "Todos",
+    "bolo",
+    "pão",
+    "salgados",
+    "torta",
+    "doces",
+    "lanches",
+    "trufas",
+  ];
+  profissionais: string[] = [
+    "Todos",
+    "Bartender",
+    "DJ",
+    "Segurança",
+    "Garçom",
+    "Cerimonialista",
+    "Cozinheiro",
+    "Limpeza",
+    "Pedreiro",
+    "Pintor",
+    "Fotógrafo",
+    "Montador de imóveis",
+    "Capinador",
+    "Marceneiro",
+    "Entregador",
+    "Jardineiro",
+  ];
+
+  saudeebeleza: string[] = [
+    "Todos",
+    "Depilação",
+    "Manicure e Pedicure",
+    "Maquiadora",
+    "Cabeleireiro",
+    "Massagem",
+    "Sobrancelha",
+    "Queratinização"
+  ];
+
+  arteemanufatura: string[] = [
+    "Todos",
+    "Bordadeira",
+    "Pintor",
+    "brinde e personalização",
+    "Costureira",
+    "Passadeira",
+    "Lavadeira",
+    "Carpinteiro",
+    "Decoração",
+    "Floricultura",
+    "Grafiteiro"
+  ]
 
   constructor(public navCtrl: NavController, private provider: ServicoProvider,
     private toast: ToastController, public navParams: NavParams) {
@@ -30,15 +85,39 @@ export class MostrarservicosPage {
 
       this.servicos = this.provider.getAll(this.categoriaServ);
       
+      if (this.categoriaServ == "Alimentos") {
+        this.sub = this.alimentos;
+      } else if (this.categoriaServ == "Profissionais") {
+        this.sub = this.profissionais;
+      } else if (this.categoriaServ == "Saudeebeleza") {
+        this.sub = this.saudeebeleza;
+      } else if (this.categoriaServ == "Arteemanufatura") {
+        this.sub = this.arteemanufatura;
+      }
   }
 
   
-  alteraSub(subcategoriaServ: String){
-    if(subcategoriaServ == "Todos"){
+  alteraSub(){
+    console.log(this.subcategoriaServ);
+    if(this.subcategoriaServ == "Todos"){
       this.servicos = this.provider.getAll(this.categoriaServ);
     }else{
-    this.servicos = this.provider.getAllSub(subcategoriaServ);
+    this.servicos = this.provider.getAllSub(this.subcategoriaServ);
     }
+  }
+
+  alteraSubcategaria() {
+    console.log(this.categoriaServ);
+    if (this.categoriaServ == "Alimentos") {
+      this.sub = this.alimentos;
+    } else if (this.categoriaServ == "Profissionais") {
+      this.sub = this.profissionais;
+    } else if (this.categoriaServ == "Saudeebeleza") {
+      this.sub = this.saudeebeleza;
+    } else if (this.categoriaServ == "Arteemanufatura") {
+      this.sub = this.arteemanufatura;
+    }
+    console.log(this.sub);
   }
 
 

@@ -18,11 +18,11 @@
     <ion-item>
       <ion-label>Categoria</ion-label>
       <ion-select id="categoria" [(ngModel)]="categoria" formControlName="categoria" (ionChange)="alteraSubcategaria( this.value );">
-        <ion-option value="alimentos">Alimentos</ion-option>
-        <ion-option value="profissionais">Profissionais</ion-option>
-        <ion-option value="saudeebeleza">Saúde &amp; Beleza</ion-option>
-        <ion-option value="arteemanufatura">Arte &amp; Manufatura</ion-option>
-        <ion-option value="outros">Outros</ion-option>
+        <ion-option value="Alimentos">Alimentos</ion-option>
+        <ion-option value="Profissionais">Profissionais</ion-option>
+        <ion-option value="Saudeebeleza">Saúde &amp; Beleza</ion-option>
+        <ion-option value="Arteemanufatura">Arte &amp; Manufatura</ion-option>
+        <ion-option value="Outros">Outros</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -54,16 +54,4 @@
         Cancelar
       </button>
   </form>
-  
-
-  <!-- <ion-list text-center>
-    <button ion-button outline item-end icon-start class="b1">
-        <ion-icon name="create" ></ion-icon>
-      Cadastrar
-    </button>
-    <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
-        <ion-icon name="close-circle" ></ion-icon>
-      Cancelar
-    </button>
-  </ion-list> -->
 </ion-content>
