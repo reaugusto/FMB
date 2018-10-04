@@ -9,8 +9,18 @@ export class ServicoProvider {
 
   constructor(private db: AngularFireDatabase){ }
 
-  getAll(){ //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
-    return this.db.list(this.PATH)
+  getAll(categoriaServ){ //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
+    return this.db.list(this.PATH, ref => ref.orderByChild("categoria").equalTo(categoriaServ))
+      .snapshotChanges()
+      .map(changes => {
+      return changes.map(s => ({
+        key: s.key,...s.payload.val()
+      }));
+    })
+  }
+
+  getAllSub(subcategoriaServ){ //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
+    return this.db.list(this.PATH, ref => ref.orderByChild("tipo").equalTo(subcategoriaServ))
       .snapshotChanges()
       .map(changes => {
       return changes.map(s => ({
