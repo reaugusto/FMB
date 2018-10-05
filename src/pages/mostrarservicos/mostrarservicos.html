@@ -21,9 +21,7 @@
             <ion-option *ngFor="let subcat of sub" [value]="subcat">{{ subcat }}</ion-option>
           </ion-select>
         </ion-item>
-      <button ion-button (click)="alteraSub('Alimentos')">
-          teste
-        </button>
+
     <ion-item-sliding *ngFor="let servico of servicos | async">
       <button ion-item clear>
         <h1>{{ servico.categoria }}</h1>

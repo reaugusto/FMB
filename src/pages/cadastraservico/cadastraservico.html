@@ -17,7 +17,7 @@
   <form [formGroup]="form">
     <ion-item>
       <ion-label>Categoria</ion-label>
-      <ion-select id="categoria" [(ngModel)]="categoria" formControlName="categoria" (ionChange)="alteraSubcategaria( this.value );">
+      <ion-select id="categoria" [(ngModel)]="categoria" formControlName="categoria" (ionChange)="alteraSubcategoria()">
         <ion-option value="Alimentos">Alimentos</ion-option>
         <ion-option value="Profissionais">Profissionais</ion-option>
         <ion-option value="Saudeebeleza">Saúde &amp; Beleza</ion-option>

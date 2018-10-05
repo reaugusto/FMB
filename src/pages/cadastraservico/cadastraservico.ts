@@ -15,9 +15,9 @@ export class CadastraservicoPage {
   sub: any[];
   public categoria: string;
 
-  alimentos: any[] = [
-    "bolo",
-    "pão",
+  alimentos: string[] = [
+    "bolos",
+    "pães",
     "salgados",
     "torta",
     "doces",
@@ -112,7 +112,7 @@ export class CadastraservicoPage {
     }
   }
 
-  alteraSubcategaria() {
+  alteraSubcategoria() {
     console.log(this.categoria);
     if (this.categoria == "Alimentos") {
       this.sub = this.alimentos;

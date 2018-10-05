@@ -8,11 +8,6 @@ npm install --save rxjs-compat
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-//CadastraservicoPage
-<button ion-item (click)="abrepagina('Alimentos')" clear>
-<button ion-item (click)="abrepagina('Profissionais')" clear>
-<button ion-item (click)="abrepagina('Saudeebeleza')" clear>
-<button ion-item (click)="abrepagina('Arteemanufatura')" clear>
-<button ion-item (click)="abrepagina('Outros')" clear>
-
-esses sao os parametros que deverao ser retornados do select para que a busca por categoria funcione
+//run android
+cordova build android
+cordova run android

@@ -20,14 +20,14 @@ import 'rxjs/add/operator/map';
 export class MostrarservicosPage {
   servicos: Observable<any>;
 
-  categoriaServ:string;
-  public subcategoriaServ:string;
+  categoriaServ: string;
+  public subcategoriaServ: string;
   sub: any[];
 
-  alimentos: any[] = [
+  alimentos: string[] = [
     "Todos",
-    "bolo",
-    "pão",
+    "bolos",
+    "pães",
     "salgados",
     "torta",
     "doces",
@@ -105,21 +105,6 @@ export class MostrarservicosPage {
     this.servicos = this.provider.getAllSub(this.subcategoriaServ);
     }
   }
-
-  alteraSubcategaria() {
-    console.log(this.categoriaServ);
-    if (this.categoriaServ == "Alimentos") {
-      this.sub = this.alimentos;
-    } else if (this.categoriaServ == "Profissionais") {
-      this.sub = this.profissionais;
-    } else if (this.categoriaServ == "Saudeebeleza") {
-      this.sub = this.saudeebeleza;
-    } else if (this.categoriaServ == "Arteemanufatura") {
-      this.sub = this.arteemanufatura;
-    }
-    console.log(this.sub);
-  }
-
 
   /*ionViewDidLoad() {
     console.log('ionViewDidLoad MostrarservicosPage');
