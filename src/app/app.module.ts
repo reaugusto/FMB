@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServicoProvider } from '../providers/servico/servico';
 import { AuthProvider } from '../providers/auth/auth';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { PropostaProvider } from '../providers/proposta/proposta';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ServicoProvider,
     AuthProvider,
-    UsuarioProvider
+    UsuarioProvider,
+    PropostaProvider
   ]
 })
 export class AppModule { }
