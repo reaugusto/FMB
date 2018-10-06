@@ -21,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServicoProvider } from '../providers/servico/servico';
 import { AuthProvider } from '../providers/auth/auth';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ServicoProvider,
-    AuthProvider
+    AuthProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule { }
