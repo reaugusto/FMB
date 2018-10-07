@@ -3,12 +3,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the UsuarioProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UsuarioProvider {
   private PATH = 'usuarios/';

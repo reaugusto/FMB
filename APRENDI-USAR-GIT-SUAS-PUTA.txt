@@ -1,6 +1,8 @@
 //quando der clone
 npm install
 npm install firebase angularfire2 --save
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic/storage
 
 //atualizacao do rxjs 
 npm install rxjs@^6.0.0 --save
@@ -11,3 +13,6 @@ import 'rxjs/add/operator/map';
 //run android
 cordova build android
 cordova run android
+
+//                                                      !IMPORTANT
+login.ts criar o if else em comentario

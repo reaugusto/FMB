@@ -15,7 +15,7 @@ import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,6 +23,8 @@ import { ServicoProvider } from '../providers/servico/servico';
 import { AuthProvider } from '../providers/auth/auth';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { PropostaProvider } from '../providers/proposta/proposta';
+import { IonicStorageModule } from '@ionic/storage';
+import { SessionProvider } from '../providers/session/session';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { PropostaProvider } from '../providers/proposta/proposta';
       messagingSenderId: "893120931333"
     }),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +74,8 @@ import { PropostaProvider } from '../providers/proposta/proposta';
     ServicoProvider,
     AuthProvider,
     UsuarioProvider,
-    PropostaProvider
+    PropostaProvider,
+    SessionProvider
   ]
 })
 export class AppModule { }

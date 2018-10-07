@@ -4,13 +4,7 @@ import { LoginPage } from '../login/login';
 import { NgForm } from '@angular/forms';
 import { User } from '../../providers/auth/user';
 import { AuthProvider } from '../../providers/auth/auth';
-
-/**
- * Generated class for the CadastrarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SessionProvider } from '../../providers/session/session';
 
 @IonicPage()
 @Component({
@@ -21,7 +15,7 @@ export class CadastrarPage {
   user: User = new User();
   @ViewChild('form') form: NgForm;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private authProvider: AuthProvider) {
+  constructor(private session: SessionProvider, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private authProvider: AuthProvider) {
   }
 
   ionViewDidLoad() {
@@ -31,14 +25,15 @@ export class CadastrarPage {
   registrar(){
     if(this.form.form.valid){
       let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
-
       this.authProvider.createUser(this.user)
       .then((user:any) =>{
+        //salva o usuario na sessao
+        this.session.create(this.user);
 
         toast.setMessage('Usuario cadastrado com sucesso');
         toast.present();
-
-        this.navCtrl.setRoot(LoginPage);//para alterar a entrada mexer AQUI
+        
+        this.navCtrl.setRoot(LoginPage);//Mudar para AtualizaperfilPage / chamar o signin do auth
       })
       .catch((error: any)=>{
         if (error.code  == 'auth/email-already-in-use') {
