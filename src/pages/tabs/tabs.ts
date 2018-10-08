@@ -4,6 +4,7 @@ import { ServicosPage } from '../servicos/servicos';
 import { MeusservicostPage } from '../meusservicos/meusservicos';
 import { MensagensPage } from '../mensagens/mensagens';
 import { PerfilPage } from '../perfil/perfil';
+import { SessionProvider } from '../../providers/session/session';
 
 @Component({
   selector: 'page-tabs',
@@ -16,7 +17,8 @@ export class TabsPage {
   tab3Root = MeusservicostPage;
   tab4Root = PerfilPage;
 
-  constructor() {
-
+  constructor(public session: SessionProvider) {
+    this.session.resgataEmail();
+    console.log(this.session.resgataEmail());
   }
 }

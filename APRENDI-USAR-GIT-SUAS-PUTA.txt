@@ -16,3 +16,11 @@ cordova run android
 
 //                                                      !IMPORTANT
 login.ts criar o if else em comentario
+
+//resgatar email do usuario na sessao
+this.session.get().then(res =>{
+      this.usuarioLogado = res.toString();
+      console.log(this.usuarioLogado);
+    });
+
+    COLOCAR SESSION.RESGATAEMAIL() NO ATUALIZAPERFILPAGE PARA UMA SOLUCAO IMEDIATA (ARRUMAR DEPOIS COM CALLBACK HELL)

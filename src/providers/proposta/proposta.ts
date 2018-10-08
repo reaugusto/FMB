@@ -55,7 +55,7 @@ export class PropostaProvider {
           id_servico: proposta.id_servico,
           cpf: proposta.cpf
         })
-        .then((result: any) => resolve(result.key))
+        .then(() => resolve());
       }
 
     });

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ServicoProvider } from '../../providers/servico/servico';//se der errado colocar um './' no inicio do caminho
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { SessionProvider } from '../../providers/session/session';
+
 
 @IonicPage()
 @Component({
@@ -67,11 +69,14 @@ export class CadastraservicoPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(private session: SessionProvider, public navCtrl: NavController, public navParams: NavParams,
     private formBuilder: FormBuilder, private provider: ServicoProvider,
     private toast: ToastController) {
 
+    //this.servico.email = this.session.resgataEmail();
+
     this.servico = this.navParams.data.servico || {};
+    
     this.createForm();
     this.setupPageTitle();
   }
@@ -93,7 +98,7 @@ export class CadastraservicoPage {
       orcamento: [this.servico.orcamento],
       tipo: [this.servico.tipo],
       titulo: [this.servico.titulo],
-      cpf: [this.servico.cpf],//recebe o cpf do usuario
+      email: [this.session.resgataEmail()],//recebe o email do usuario
       id_proposta: [this.servico.id_proposta],//tirar isso daqui (deixar apenas para evitar erros por enquanto)
     })
   }

@@ -58,7 +58,7 @@ export class UsuarioProvider {
           telefone: usuario.telefone,
           saldo: usuario.saldo
         })
-        .then((result: any) => resolve(result.key))
+        .then(() => resolve());
       }
 
     });

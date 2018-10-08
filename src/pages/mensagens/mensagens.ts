@@ -10,7 +10,7 @@ import { User } from '../../providers/auth/user';
   templateUrl: 'mensagens.html'
 })
 export class MensagensPage {
-  usuario: User;
+  usuarioLogado: string;
 
   items:any[] = [
     {titulo: "teste1", texto: "texto1"},
@@ -20,11 +20,21 @@ export class MensagensPage {
     {titulo: "teste5", texto: "texto6"}
   ]
 
-  constructor(public navCtrl: NavController, private session: SessionProvider) { }
+  constructor(public navCtrl: NavController, public session: SessionProvider) { }
 
   criaSession() {
-    this.session.exist();
+    /*this.session.get().then(res =>{
+      this.usuarioLogado = res.toString();
+      console.log(this.usuarioLogado);
+    });*/
+    /*this.session.get()
+        .then(res => {
+          this.usuarioLogado = new User(res);
+          console.log('usuário logado  >>> ',this.usuarioLogado);
+      });*/
+    this.session.resgataEmail();
+    console.log(this.session.resgataEmail());
+    //console.log(this.session.resgataEmail());
   }
-
 
 }

@@ -49,7 +49,7 @@ export class ServicoProvider {
           orcamento: servico.orcamento,
           tipo: servico.tipo,
           titulo: servico.titulo,
-          cpf: servico.cpf,
+          email: servico.email,
           id_proposta: servico.id_proposta
         })
         .then(() => resolve())
@@ -63,10 +63,10 @@ export class ServicoProvider {
           orcamento: servico.orcamento,
           tipo: servico.tipo,
           titulo: servico.titulo,
-          cpf: servico.cpf,
+          email: servico.email,
           id_proposta: servico.id_proposta
         })
-        .then((result: any) => resolve(result.key))
+        .then(() => resolve());
       }
 
     });

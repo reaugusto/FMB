@@ -5,16 +5,27 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SessionProvider {
-
-  constructor(public storage: Storage) { }
+  public teste:string;
+  constructor(private storage: Storage) { }
 
   create(usuario: User) {
     //salvar apenas email por questoes de seguranca
-    this.storage.set('usuario', usuario.email);
+    this.storage.set('email', usuario.email);
+    console.log(usuario.email);
   }
 
   get(): Promise<any> {
-    return this.storage.get('usuario');
+    return this.storage.get('email');
+  }
+
+  resgataEmail(): string {
+    console.log('1')
+    this.storage.get('email').then((val:string) => {
+      this.teste = val;
+      console.log('2');
+    });
+    console.log('3');
+    return this.teste;
   }
 
   remove() {
@@ -32,7 +43,7 @@ export class SessionProvider {
         return false;
       }
     });
-  }
+}
 
 
 }
