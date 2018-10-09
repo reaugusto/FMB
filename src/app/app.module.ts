@@ -25,6 +25,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
 import { PropostaProvider } from '../providers/proposta/proposta';
 import { IonicStorageModule } from '@ionic/storage';
 import { SessionProvider } from '../providers/session/session';
+import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SessionProvider } from '../providers/session/session';
     LoginPage,
     CadastrarPage,
     CadastraservicoPage,
-    MostrarservicosPage
+    MostrarservicosPage,
+    AtualizaperfilPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { SessionProvider } from '../providers/session/session';
     LoginPage,
     CadastrarPage,
     CadastraservicoPage,
-    MostrarservicosPage
+    MostrarservicosPage,
+    AtualizaperfilPage
   ],
   providers: [
     StatusBar,

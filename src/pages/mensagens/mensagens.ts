@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { SessionProvider } from '../../providers/session/session';
 //importa user de auth
 import { User } from '../../providers/auth/user';
+import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
 
 @Component({
   selector: 'page-mensagens',
@@ -32,9 +33,11 @@ export class MensagensPage {
           this.usuarioLogado = new User(res);
           console.log('usuário logado  >>> ',this.usuarioLogado);
       });*/
-    this.session.resgataEmail();
-    console.log(this.session.resgataEmail());
-    //console.log(this.session.resgataEmail());
+    /*this.session.resgataEmail();
+    console.log(this.session.resgataEmail());*/
+    this.navCtrl.push(AtualizaperfilPage);
+    //this.usuarioLogado = this.session.resgataEmail();
+    //console.log(this.usuarioLogado);
   }
 
 }

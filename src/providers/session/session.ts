@@ -20,11 +20,13 @@ export class SessionProvider {
 
   resgataEmail(): string {
     console.log('1')
-    this.storage.get('email').then((val:string) => {
-      this.teste = val;
-      console.log('2');
+    this.get().then(async (val:string) => {
+      this.teste = await val;
+      await console.log('2');
+      await console.log("DENTRO >>", this.teste);
     });
     console.log('3');
+    console.log("FORA >>", this.teste);
     return this.teste;
   }
 

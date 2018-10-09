@@ -33,7 +33,8 @@ export class LoginPage {
   signIn(){
     if(this.form.form.valid){
       this.session.create(this.user);
-      this.session.resgataEmail();
+      //resgatar o email do usuario aqui
+      this.session.get();
       this.authProvider.signIn(this.user)
       .then(() => {
         //if (se ja existir uma key com o email desse usuario)

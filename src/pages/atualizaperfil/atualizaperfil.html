@@ -13,6 +13,56 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="has-header" padding="true" text-center>
+  <form [formGroup]="form">
 
+
+    <ion-item>
+      <ion-label stacked>CPF</ion-label>
+      <ion-input type="number" formControlName="cpf"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label stacked>Sobrenome</ion-label>
+        <ion-textarea type="text" formControlName="sobrenome"></ion-textarea>
+      </ion-item>
+
+
+    <ion-item>
+      <ion-label stacked>CEP</ion-label>
+      <ion-input type="number" formControlName="cep"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label stacked>Numero</ion-label>
+        <ion-input type="number" formControlName="numero"></ion-input>
+      </ion-item>
+      
+
+    <ion-item>
+        <ion-label stacked>Telefone</ion-label>
+        <ion-input type="number" formControlName="telefone"></ion-input>
+      </ion-item>
+
+
+
+    <button ion-button outline item-end icon-start class="b1" type="submit" [disabled]="!form.valid" (click)="onSubmit()">
+      <ion-icon name="create"></ion-icon>
+      Salvar
+    </button>
+
+
+    <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
+      <ion-icon name="close-circle"></ion-icon>
+      Cancelar
+    </button>
+  </form>
 </ion-content>
