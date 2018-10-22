@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { ServicoProvider } from '../../providers/servico/servico';//se der errado colocar um './' no inicio do caminho
+import { ServicoProvider } from '../../providers/servico/servico';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { LoginPage } from '../login/login';
+import { ServicoSingularPage } from '../servico-singular/servico-singular';
 
 /**
  * Generated class for the MostrarservicosPage page.
@@ -19,6 +21,7 @@ import 'rxjs/add/operator/map';
 })
 export class MostrarservicosPage {
   servicos: Observable<any>;
+  servicoNav:any;
 
   categoriaServ: string;
   public subcategoriaServ: string;
@@ -85,6 +88,7 @@ export class MostrarservicosPage {
 
       this.servicos = this.provider.getAll(this.categoriaServ);
       
+      
       if (this.categoriaServ == "Alimentos") {
         this.sub = this.alimentos;
       } else if (this.categoriaServ == "Profissionais") {
@@ -104,6 +108,13 @@ export class MostrarservicosPage {
     }else{
     this.servicos = this.provider.getAllSub(this.subcategoriaServ);
     }
+  }
+
+  mostraServicoSingular(servico:any){
+    console.log(servico);//objeto inteiro
+    //passar o objeto servico para a proxima pagina
+    this.navCtrl.push(ServicoSingularPage, {servico});
+    
   }
 
   /*ionViewDidLoad() {

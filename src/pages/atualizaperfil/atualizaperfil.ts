@@ -33,7 +33,7 @@ export class AtualizaperfilPage {
       avaliacao: [this.usuario.avaliacao],//tirar isso daqui
       cep: [this.usuario.cep],
       numero: [this.usuario.numero],
-      email: [this.session.resgataEmail()],//isso tera que ser recebido diretamente da pagina anterior
+      email: [this.session.resgataEmail()],
       telefone: [this.usuario.telefone],
       saldo: [this.usuario.saldo]//tirar isso daqui
     })

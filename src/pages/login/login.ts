@@ -33,7 +33,7 @@ export class LoginPage {
   signIn(){
     if(this.form.form.valid){
       this.session.create(this.user);
-      //resgatar o email do usuario aqui
+      //resgatar o email do usuario aqui para utilizar no ifelse abaixo
       this.session.get();
       this.authProvider.signIn(this.user)
       .then(() => {

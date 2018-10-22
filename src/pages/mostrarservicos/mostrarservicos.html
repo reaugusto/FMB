@@ -21,9 +21,9 @@
             <ion-option *ngFor="let subcat of sub" [value]="subcat">{{ subcat }}</ion-option>
           </ion-select>
         </ion-item>
-
+  
     <ion-item-sliding *ngFor="let servico of servicos | async">
-      <button ion-item clear>
+      <button ion-item clear (click)="mostraServicoSingular(servico)">
         <h1>{{ servico.categoria }}</h1>
         <p>{{ servico.id_servico }}</p>
         <p>{{ servico.detalhes }}</p>

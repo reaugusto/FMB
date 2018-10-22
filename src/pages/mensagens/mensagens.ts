@@ -36,7 +36,6 @@ export class MensagensPage {
     /*this.session.resgataEmail();
     console.log(this.session.resgataEmail());*/
     this.navCtrl.push(AtualizaperfilPage);
-    //this.usuarioLogado = this.session.resgataEmail();
     //console.log(this.usuarioLogado);
   }
 

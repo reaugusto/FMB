@@ -12,6 +12,8 @@ import { LoginPage } from '../pages/login/login';
 import { CadastrarPage } from '../pages/cadastrar/cadastrar';
 import { CadastraservicoPage } from '../pages/cadastraservico/cadastraservico';
 import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
+import { ServicoSingularPage } from '../pages/servico-singular/servico-singular';
+import { FazerpropostaPage } from '../pages/fazerproposta/fazerproposta'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -39,7 +41,9 @@ import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
     CadastrarPage,
     CadastraservicoPage,
     MostrarservicosPage,
-    AtualizaperfilPage
+    AtualizaperfilPage,
+    ServicoSingularPage,
+    FazerpropostaPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,9 @@ import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
     CadastrarPage,
     CadastraservicoPage,
     MostrarservicosPage,
-    AtualizaperfilPage
+    AtualizaperfilPage,
+    ServicoSingularPage,
+    FazerpropostaPage
   ],
   providers: [
     StatusBar,
