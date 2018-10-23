@@ -26,6 +26,16 @@ export class PropostaProvider {
     })
   }
 
+  getMinhasPropostas(email){
+    return this.db.list(this.PATH, ref => ref.orderByChild("email").equalTo(email))
+      .snapshotChanges()
+      .map(changes => {
+      return changes.map(s => ({
+        key: s.key,...s.payload.val()
+      }));
+    })
+  }
+
   //usar para popular id_proposta dentro do servico que o aceitar
  get(key: string){ // retorna um unico objeto referenciado por 'key' do caminho 'PATH' no firebase
     return this.db.object(this.PATH + key)
@@ -43,7 +53,8 @@ export class PropostaProvider {
           tempo_entrega: proposta.tempo_entrega,
           valor: proposta.valor,
           id_servico: proposta.id_servico,
-          cpf: proposta.cpf
+          cpf: proposta.cpf,
+          email: proposta.email
         })
         .then(() => resolve())
         .catch((e) => reject(e));
@@ -53,7 +64,8 @@ export class PropostaProvider {
           tempo_entrega: proposta.tempo_entrega,
           valor: proposta.valor,
           id_servico: proposta.id_servico,
-          cpf: proposta.cpf
+          cpf: proposta.cpf,
+          email: proposta.email
         })
         .then(() => resolve());
       }

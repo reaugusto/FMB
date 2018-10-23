@@ -18,7 +18,7 @@ export class TabsPage {
   tab4Root = PerfilPage;
 
   constructor(public session: SessionProvider) {
-    //this.session.resgataEmail();
-    //console.log(this.session.resgataEmail());
+    this.session.resgataEmail();
+    console.log(this.session.resgataEmail());
   }
 }

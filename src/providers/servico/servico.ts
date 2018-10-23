@@ -29,6 +29,16 @@ export class ServicoProvider {
       })
   }
 
+  getMeusServicos(email){
+    return this.db.list(this.PATH, ref => ref.orderByChild("email").equalTo(email))
+      .snapshotChanges()
+      .map(changes => {
+        return changes.map(s => ({
+          key: s.key, ...s.payload.val()
+        }));
+      })
+  }
+
   /*get(key: string) { // retorna um unico objeto referenciado por 'key' do caminho 'PATH' no firebase
   //console.log(this.PATH + key); //esta funcionando perfeitamente
     return this.db.object(this.PATH + key)

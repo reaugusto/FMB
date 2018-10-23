@@ -39,6 +39,7 @@ export class FazerpropostaPage {
       valor: [this.proposta.valor],
       id_servico: [this.proposta.id_servico],
       cpf: [this.proposta.cpf],
+      email: [this.session.resgataEmail()]
       //detalhes: [this.proposta.detalhes],// analisar
       //email: [this.session.resgataEmail()],//recebe o email do usuario, analisar
       //id_proposta: [this.proposta.id_proposta],//tirar isso daqui (deixar apenas para evitar erros por enquanto)

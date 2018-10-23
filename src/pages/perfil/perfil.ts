@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { SessionProvider } from '../../providers/session/session';
+import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
 
 @Component({
   selector: 'page-perfil',
@@ -12,6 +13,10 @@ export class PerfilPage {
 
   constructor(private session: SessionProvider, public navCtrl: NavController, private authProvider: AuthProvider) {
 
+  }
+
+  atualizarPerfil(){
+    this.navCtrl.push(AtualizaperfilPage);
   }
 
   signOut(){
