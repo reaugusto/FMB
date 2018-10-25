@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
   <ion-item-sliding *ngFor="let servico of meusServicos | async">
     <button ion-item clear (click)="mostraServicoSingular(servico)">
       <h1>{{ servico.categoria }}</h1>
@@ -19,15 +19,17 @@
       <p>{{ servico.cpf }}</p>
       <p>{{ servico.id_proposta }}</p>
     </button>
-    <ion-item-options side="left">
+    <ion-item-options side="left" (click)="servicoPropostas(servico)">
       <button ion-button color="primary">
-        <ion-icon name="text"></ion-icon>
-        Mensagem
+        <ion-icon name="bowtie"></ion-icon>
+        Propostas
       </button>
-      <button ion-button color="secondary">
+
+      <!-- <button ion-button color="secondary" (click)="mostraServicoSingular(servico)">
         <ion-icon name=""></ion-icon>
-        Proposta
-      </button>
+        Editar
+      </button> -->
+
     </ion-item-options>
   </ion-item-sliding>
 
@@ -42,5 +44,5 @@
         <ion-icon name="clipboard"></ion-icon>
       </button>
     </ion-fab>
-
+  </ion-list>
 </ion-content>

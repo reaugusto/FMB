@@ -36,7 +36,17 @@ export class PropostaProvider {
     })
   }
 
-  //usar para popular id_proposta dentro do servico que o aceitar
+  getPropostasServicos(id_servico:any){
+    return this.db.list(this.PATH, ref => ref.orderByChild("id_servico").equalTo(id_servico))
+      .snapshotChanges()
+      .map(changes => {
+      return changes.map(s => ({
+        key: s.key,...s.payload.val()
+      }));
+    })
+  }
+
+  //usar para popular id_proposta dentro do servico que o aceitar CASO NECESSARIO
  get(key: string){ // retorna um unico objeto referenciado por 'key' do caminho 'PATH' no firebase
     return this.db.object(this.PATH + key)
     .snapshotChanges()

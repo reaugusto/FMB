@@ -15,6 +15,7 @@ import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 import { ServicoSingularPage } from '../pages/servico-singular/servico-singular';
 import { FazerpropostaPage } from '../pages/fazerproposta/fazerproposta'
 import { MinhaspropostasPage } from '../pages/minhaspropostas/minhaspropostas'
+import { PropostasMeuServicoPage } from '../pages/propostas-meu-servico/propostas-meu-servico'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -29,6 +30,7 @@ import { PropostaProvider } from '../providers/proposta/proposta';
 import { IonicStorageModule } from '@ionic/storage';
 import { SessionProvider } from '../providers/session/session';
 import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    MinhaspropostasPage
+    MinhaspropostasPage,
+    PropostasMeuServicoPage
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    MinhaspropostasPage
+    MinhaspropostasPage,
+    PropostasMeuServicoPage
   ],
   providers: [
     StatusBar,

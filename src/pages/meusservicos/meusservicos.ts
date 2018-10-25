@@ -6,6 +6,7 @@ import { ServicoProvider } from '../../providers/servico/servico';
 import { SessionProvider } from '../../providers/session/session';
 import { ServicoSingularPage } from '../servico-singular/servico-singular';
 import { MinhaspropostasPage } from '../minhaspropostas/minhaspropostas';
+import { PropostasMeuServicoPage } from '../propostas-meu-servico/propostas-meu-servico';
 
 
 @Component({
@@ -33,6 +34,10 @@ export class MeusservicostPage {
 
   mostraPropostas(){
     this.navCtrl.push(MinhaspropostasPage);
+  }
+
+  servicoPropostas(servico: any){
+    this.navCtrl.push(PropostasMeuServicoPage , {servico});
   }
 
 }

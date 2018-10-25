@@ -17,7 +17,7 @@ import { PropostaProvider } from '../../providers/proposta/proposta';
   templateUrl: 'fazerproposta.html',
 })
 export class FazerpropostaPage {
-  servico: string;
+  servico: any;
   proposta: any;
   form: FormGroup;
 
@@ -26,9 +26,9 @@ export class FazerpropostaPage {
     private session: SessionProvider) {
 
     this.proposta = this.navParams.data.proposta || {};
-    this.createForm();
-
     this.servico = this.navParams.get('servico');
+
+    this.createForm();
     console.log(this.servico);
   }
 
@@ -37,9 +37,10 @@ export class FazerpropostaPage {
       key: [this.proposta.key],
       tempo_entrega: [this.proposta.tempo_entrega],
       valor: [this.proposta.valor],
-      id_servico: [this.proposta.id_servico],
+      id_servico: [this.servico.key],// fala que tem erro aqui mas funciona
       cpf: [this.proposta.cpf],
       email: [this.session.resgataEmail()]
+
       //detalhes: [this.proposta.detalhes],// analisar
       //email: [this.session.resgataEmail()],//recebe o email do usuario, analisar
       //id_proposta: [this.proposta.id_proposta],//tirar isso daqui (deixar apenas para evitar erros por enquanto)
