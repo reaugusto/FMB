@@ -7,8 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  
   <ion-item-sliding *ngFor="let servico of meusServicos | async">
+    
     <button ion-item clear (click)="servicoPropostas(servico)">
       <h1>{{ servico.categoria }}</h1>
       <p>{{ servico.id_servico }}</p>
@@ -19,16 +20,17 @@
       <p>{{ servico.cpf }}</p>
       <p>{{ servico.id_proposta }}</p>
     </button>
-    <ion-item-options side="left" (click)="mostraServicoSingular(servico)">
-      <button ion-button color="primary">
+
+    <ion-item-options side="left">
+      <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
         <ion-icon name="create"></ion-icon>
         Editar
       </button>
 
-      <!-- <button ion-button color="secondary" (click)="mostraServicoSingular(servico)">
-        <ion-icon name=""></ion-icon>
-        Editar
-      </button> -->
+      <button ion-button color="secondary" (click)="removeServico(servico)">
+        <ion-icon name="close"></ion-icon>
+        Remover
+      </button>
 
     </ion-item-options>
   </ion-item-sliding>
@@ -44,5 +46,5 @@
         <ion-icon name="clipboard"></ion-icon>
       </button>
     </ion-fab>
-  </ion-list>
+
 </ion-content>

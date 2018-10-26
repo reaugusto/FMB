@@ -44,7 +44,6 @@ export class PropostasMeuServicoPage {
         {
           text: "Aceitar",
           handler: ()=>{
-              console.log("aceitou");
               this.servicoProvider.aceitaProposta(this.servico, proposta.key);
           }
         }]

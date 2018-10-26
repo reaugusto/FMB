@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { CadastraservicoPage } from '../cadastraservico/cadastraservico';
 import { Observable } from 'rxjs';
 import { ServicoProvider } from '../../providers/servico/servico';
@@ -17,7 +17,8 @@ export class MeusservicostPage {
   meusServicos: Observable<any>;
   email:any = this.session.resgataEmail()
 
-  constructor(public navCtrl: NavController, private provider: ServicoProvider, private session: SessionProvider) {
+  constructor(public navCtrl: NavController, private provider: ServicoProvider, private session: SessionProvider,
+    private alertController: AlertController) {
       this.meusServicos = this.provider.getMeusServicos(this.email);
   }
 
@@ -38,6 +39,25 @@ export class MeusservicostPage {
 
   servicoPropostas(servico: any){
     this.navCtrl.push(PropostasMeuServicoPage , {servico});
+  }
+
+  removeServico(servico: any){
+    let addAlert = this.alertController.create({
+      title: "Confirmação",
+      message: "Tem certeza que deseja remover este servico?",
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: "Aceitar",
+          handler: ()=>{
+              this.provider.remove(servico.key);
+          }
+        }]
+    })
+    addAlert.present();
   }
 
 }
