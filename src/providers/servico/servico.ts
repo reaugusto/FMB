@@ -82,6 +82,17 @@ export class ServicoProvider {
     });
   }
 
+  aceitaProposta(servico:any, id_proposta:any){
+    return new Promise((resolve, reject) => {
+        this.db.list(this.PATH)
+          .update(servico.key, {
+            id_proposta: id_proposta
+          })
+          .then(() => resolve())
+          .catch((e) => reject(e));
+    });
+  }
+
   remove(key: string) {//apaga do banco
     return this.db.list(this.PATH).remove(key);
   }
