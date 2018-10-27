@@ -25,3 +25,12 @@ this.session.get().then(res =>{
     });
 
     COLOCAR SESSION.RESGATAEMAIL() NO ATUALIZAPERFILPAGE PARA UMA SOLUCAO IMEDIATA (ARRUMAR DEPOIS COM CALLBACK HELL)
+    
+    //cadastraservico.ts no construtor depois que cria o formulario
+    
+    if(this.navParams.data.servico){
+        console.log("funcionou");
+        this.categoria = this.servico.categoria;
+        this.subcategoria = this.servico.tipo;
+        this.alteraSubcategoria();
+    }
