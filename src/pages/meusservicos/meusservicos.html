@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-list>
   <ion-item-sliding *ngFor="let servico of meusServicos | async">
     
     <button ion-item clear (click)="servicoPropostas(servico)">
@@ -34,6 +34,7 @@
 
     </ion-item-options>
   </ion-item-sliding>
+</ion-list>
 
     <ion-fab bottom right>
       <button ion-fab mini (click)="cadastraServico()">
@@ -46,5 +47,4 @@
         <ion-icon name="clipboard"></ion-icon>
       </button>
     </ion-fab>
-
 </ion-content>
