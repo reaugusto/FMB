@@ -14,7 +14,6 @@ import { CadastraservicoPage } from '../pages/cadastraservico/cadastraservico';
 import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 import { ServicoSingularPage } from '../pages/servico-singular/servico-singular';
 import { FazerpropostaPage } from '../pages/fazerproposta/fazerproposta'
-import { MinhaspropostasPage } from '../pages/minhaspropostas/minhaspropostas'
 import { PropostasMeuServicoPage } from '../pages/propostas-meu-servico/propostas-meu-servico'
 
 import { AngularFireModule } from 'angularfire2';
@@ -47,7 +46,6 @@ import { from } from 'rxjs';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    MinhaspropostasPage,
     PropostasMeuServicoPage
   ],
   imports: [
@@ -80,7 +78,6 @@ import { from } from 'rxjs';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    MinhaspropostasPage,
     PropostasMeuServicoPage
   ],
   providers: [

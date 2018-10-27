@@ -7,44 +7,80 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-  <ion-item-sliding *ngFor="let servico of meusServicos | async">
-    
-    <button ion-item clear (click)="servicoPropostas(servico)">
-      <h1>{{ servico.categoria }}</h1>
-      <p>{{ servico.id_servico }}</p>
-      <p>{{ servico.detalhes }}</p>
-      <p>{{ servico.orcamento }}</p>
-      <p>{{ servico.tipo }}</p>
-      <p>{{ servico.titulo }}</p>
-      <p>{{ servico.cpf }}</p>
-      <p>{{ servico.id_proposta }}</p>
+    <div padding>
+        <ion-segment [(ngModel)]="mservicos">
+          <ion-segment-button value="ativos">
+            Ativos
+          </ion-segment-button>
+          <ion-segment-button value="solicitados">
+            Solicitados
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      
+      <div [ngSwitch]="mservicos">
+
+        <ion-list *ngSwitchCase="'ativos'"><!-- criar o carregamento da lista a partir daqui-->
+          <ion-item-sliding *ngFor="let servicoAtivo of servicosAtivos | async">
+              <button ion-item clear (click)="testeAtivos()">
+                <h1>{{ servicoAtivo.categoria }}</h1>
+                <p>{{ servicoAtivo.id_servico }}</p>
+                <p>{{ servicoAtivo.detalhes }}</p>
+                <p>{{ servicoAtivo.orcamento }}</p>
+                <p>{{ servicoAtivo.tipo }}</p>
+                <p>{{ servicoAtivo.titulo }}</p>
+                <p>{{ servicoAtivo.cpf }}</p>
+                <p>{{ servicoAtivo.id_proposta }}</p>
+              </button>
+        
+              <!-- <ion-item-options side="left">
+                <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
+                  <ion-icon name="create"></ion-icon>
+                  Editar
+                </button>
+                <button ion-button color="secondary" (click)="removeServico(servico)">
+                  <ion-icon name="close"></ion-icon>
+                  Remover
+                </button>
+              </ion-item-options> -->
+        
+            </ion-item-sliding>
+          
+          
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'solicitados'"> <!-- criar o carregamento da lista a partir daqui-->
+          <ion-item-sliding *ngFor="let servico of meusServicos | async">
+              <button ion-item clear (click)="servicoPropostas(servico)">
+                <h1>{{ servico.categoria }}</h1>
+                <p>{{ servico.id_servico }}</p>
+                <p>{{ servico.detalhes }}</p>
+                <p>{{ servico.orcamento }}</p>
+                <p>{{ servico.tipo }}</p>
+                <p>{{ servico.titulo }}</p>
+                <p>{{ servico.cpf }}</p>
+                <p>{{ servico.id_proposta }}</p>
+              </button>
+        
+              <ion-item-options side="left">
+                <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
+                  <ion-icon name="create"></ion-icon>
+                  Editar
+                </button>
+                <button ion-button color="secondary" (click)="removeServico(servico)">
+                  <ion-icon name="close"></ion-icon>
+                  Remover
+                </button>
+              </ion-item-options>
+        
+            </ion-item-sliding>
+          
+        </ion-list>
+      </div>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="cadastraServico()">
+      <ion-icon name="add"></ion-icon>
     </button>
-
-    <ion-item-options side="left">
-      <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
-        <ion-icon name="create"></ion-icon>
-        Editar
-      </button>
-
-      <button ion-button color="secondary" (click)="removeServico(servico)">
-        <ion-icon name="close"></ion-icon>
-        Remover
-      </button>
-
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
-
-    <ion-fab bottom right>
-      <button ion-fab mini (click)="cadastraServico()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-fab>
-    
-    <ion-fab bottom left>
-      <button ion-fab mini (click)="mostraPropostas()">
-        <ion-icon name="clipboard"></ion-icon>
-      </button>
-    </ion-fab>
+  </ion-fab>
 </ion-content>

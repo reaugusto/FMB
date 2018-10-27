@@ -16,6 +16,7 @@ export class CadastraservicoPage {
   servico: any;
   sub: any[];
   public categoria: string;
+  public subcategoria: string;
 
   alimentos: string[] = [
     "bolos",
@@ -79,6 +80,13 @@ export class CadastraservicoPage {
     
     this.createForm();
     this.setupPageTitle();
+    if(this.navParams.data.servico){
+      console.log("funcionou");
+      this.categoria = this.servico.categoria;
+      this.subcategoria = this.servico.tipo;
+      this.alteraSubcategoria();
+  }
+
   }
 
   cancel() {

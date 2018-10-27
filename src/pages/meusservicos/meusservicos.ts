@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ServicoProvider } from '../../providers/servico/servico';
 import { SessionProvider } from '../../providers/session/session';
 import { ServicoSingularPage } from '../servico-singular/servico-singular';
-import { MinhaspropostasPage } from '../minhaspropostas/minhaspropostas';
 import { PropostasMeuServicoPage } from '../propostas-meu-servico/propostas-meu-servico';
 
 
@@ -15,11 +14,15 @@ import { PropostasMeuServicoPage } from '../propostas-meu-servico/propostas-meu-
 })
 export class MeusservicostPage {
   meusServicos: Observable<any>;
+  servicosAtivos: Observable<any>;
   email:any = this.session.resgataEmail()
+  mservicos: any;
 
   constructor(public navCtrl: NavController, private provider: ServicoProvider, private session: SessionProvider,
     private alertController: AlertController) {
       this.meusServicos = this.provider.getMeusServicos(this.email);
+      this.servicosAtivos = this.provider.getServicosAtivos(this.email);
+      this.mservicos = "ativos";
   }
 
   cadastraServico(){
@@ -31,10 +34,6 @@ export class MeusservicostPage {
     //passar o objeto servico para a proxima pagina
     this.navCtrl.push(CadastraservicoPage, {servico});
     
-  }
-
-  mostraPropostas(){
-    this.navCtrl.push(MinhaspropostasPage);
   }
 
   servicoPropostas(servico: any){
@@ -58,6 +57,11 @@ export class MeusservicostPage {
         }]
     })
     addAlert.present();
+  }
+
+  //ATIVOS
+  testeAtivos(){
+    console.log("funcionou");
   }
 
 }

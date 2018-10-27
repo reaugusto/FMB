@@ -39,6 +39,17 @@ export class ServicoProvider {
       })
   }
 
+  getServicosAtivos(email){
+    console.log(email);
+    return this.db.list(this.PATH, ref => ref.orderByChild("emailPropositor").equalTo(email))
+      .snapshotChanges()
+      .map(changes => {
+        return changes.map(s => ({
+          key: s.key, ...s.payload.val()
+        }));
+      })
+  }
+
   /*get(key: string) { // retorna um unico objeto referenciado por 'key' do caminho 'PATH' no firebase
   //console.log(this.PATH + key); //esta funcionando perfeitamente
     return this.db.object(this.PATH + key)
@@ -82,11 +93,12 @@ export class ServicoProvider {
     });
   }
 
-  aceitaProposta(servico:any, id_proposta:any){
+  aceitaProposta(servico:any, id_proposta:any, emailPropositor:any){
     return new Promise((resolve, reject) => {
         this.db.list(this.PATH)
           .update(servico.key, {
-            id_proposta: id_proposta
+            id_proposta: id_proposta,
+            emailPropositor: emailPropositor
           })
           .then(() => resolve())
           .catch((e) => reject(e));
