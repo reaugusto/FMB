@@ -15,7 +15,7 @@ export class AtualizaperfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private provider: UsuarioProvider,
     private toast:ToastController, private session: SessionProvider) {
-      this.usuario = this.navParams.data.servico || {};
+      this.usuario = this.navParams.data.b || {};
       this.createForm();
   }
 
@@ -27,6 +27,7 @@ export class AtualizaperfilPage {
 
   createForm() {
     this.form = this.formBuilder.group({
+      key: [this.usuario.key],
       cpf: [this.usuario.cpf],
       nome: [this.usuario.nome],
       sobrenome: [this.usuario.sobrenome],

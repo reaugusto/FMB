@@ -4,19 +4,34 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { SessionProvider } from '../../providers/session/session';
 import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html'
 })
 export class PerfilPage {
-
-  constructor(private session: SessionProvider, public navCtrl: NavController, private authProvider: AuthProvider) {
-
+  constructor(private session: SessionProvider, public navCtrl: NavController, private authProvider: AuthProvider,
+    private usuario: UsuarioProvider) {
+      
+      /*this.x = this.usuario.getLogado(this.session.resgataEmail());
+      for(let data of this.x) {
+        console.log("cep aqui !>" + data.cep);
+      }*/
   }
 
   atualizarPerfil(){
-    this.navCtrl.push(AtualizaperfilPage);
+    const y = this.usuario.getLogado(this.session.resgataEmail()).subscribe(res =>{
+      let b = res[0];
+      this.navCtrl.push(AtualizaperfilPage, {b});
+      y.unsubscribe;
+  });
+
+    //  for(let data of this.x) {
+    //    console.log("cep aqui !>" + data.cep);
+    //  }
+    //this.navCtrl.push(AtualizaperfilPage);
   }
 
   signOut(){
