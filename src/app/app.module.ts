@@ -15,6 +15,7 @@ import { MostrarservicosPage } from '../pages/mostrarservicos/mostrarservicos';
 import { ServicoSingularPage } from '../pages/servico-singular/servico-singular';
 import { FazerpropostaPage } from '../pages/fazerproposta/fazerproposta'
 import { PropostasMeuServicoPage } from '../pages/propostas-meu-servico/propostas-meu-servico'
+import { RoomPage } from '../pages/room/room'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -46,7 +47,8 @@ import { from } from 'rxjs';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    PropostasMeuServicoPage
+    PropostasMeuServicoPage,
+    RoomPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { from } from 'rxjs';
     AtualizaperfilPage,
     ServicoSingularPage,
     FazerpropostaPage,
-    PropostasMeuServicoPage
+    PropostasMeuServicoPage,
+    RoomPage
   ],
   providers: [
     StatusBar,

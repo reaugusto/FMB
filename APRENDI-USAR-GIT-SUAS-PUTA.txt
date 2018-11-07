@@ -34,3 +34,22 @@ this.session.get().then(res =>{
         this.subcategoria = this.servico.tipo;
         this.alteraSubcategoria();
     }
+
+
+aloaloalo
+
+criaSession() {
+    /*this.session.get().then(res =>{
+      this.usuarioLogado = res.toString();
+      console.log(this.usuarioLogado);
+    });*/
+    /*this.session.get()
+        .then(res => {
+          this.usuarioLogado = new User(res);
+          console.log('usuário logado  >>> ',this.usuarioLogado);
+      });*/
+    /*this.session.resgataEmail();
+    console.log(this.session.resgataEmail());*/
+    this.navCtrl.push(AtualizaperfilPage);
+    //console.log(this.usuarioLogado);
+  }

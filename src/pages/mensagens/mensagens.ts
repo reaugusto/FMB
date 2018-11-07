@@ -1,42 +1,50 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-//importa a session
-import { SessionProvider } from '../../providers/session/session';
-//importa user de auth
-import { User } from '../../providers/auth/user';
-import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
+import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { RoomPage } from '../room/room';
+import * as firebase from 'Firebase';
 
+@IonicPage()
 @Component({
   selector: 'page-mensagens',
   templateUrl: 'mensagens.html'
 })
 export class MensagensPage {
-  usuarioLogado: string;
+  rooms = [];
+  ref = firebase.database().ref('chatrooms/');
 
-  items:any[] = [
-    {titulo: "teste1", texto: "texto1"},
-    {titulo: "teste2", texto: "texto2"},
-    {titulo: "teste3", texto: "texto3"},
-    {titulo: "teste4", texto: "texto5"},
-    {titulo: "teste5", texto: "texto6"}
-  ]
 
-  constructor(public navCtrl: NavController, public session: SessionProvider) { }
-
-  criaSession() {
-    /*this.session.get().then(res =>{
-      this.usuarioLogado = res.toString();
-      console.log(this.usuarioLogado);
-    });*/
-    /*this.session.get()
-        .then(res => {
-          this.usuarioLogado = new User(res);
-          console.log('usuário logado  >>> ',this.usuarioLogado);
-      });*/
-    /*this.session.resgataEmail();
-    console.log(this.session.resgataEmail());*/
-    this.navCtrl.push(AtualizaperfilPage);
-    //console.log(this.usuarioLogado);
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.ref.on('value', resp => {
+      this.rooms = [];
+      this.rooms = snapshotToArray(resp);
+    });
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad RoomPage');
+  }
+
+  onClick() {
+    console.log("click");
+    this.navCtrl.push(RoomPage);
+    }
+  joinRoom(key,roomname) {
+      this.navCtrl.push(RoomPage, {
+        key:key,
+        roomname:roomname,
+        nickname:"gustavo"
+  });
+  }
+
+}
+
+export const snapshotToArray = snapshot => {
+  let returnArr = [];
+
+  snapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val();
+      item.key = childSnapshot.key;
+      returnArr.push(item);
+  });
+  return returnArr;
 }

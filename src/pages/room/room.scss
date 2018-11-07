@@ -1,0 +1,74 @@
+page-room {
+  .imgcontact{
+    margin-right: 100%;
+  }
+  ion-footer {
+    background: white;
+    ion-icon {
+      padding: 10px;
+      font-size: 30px;
+      color: gray;
+    }
+  }
+  ion-content {
+    height: 100%;
+    overflow: hidden;
+    .item-md, .item-ios {
+      background: none;
+    }
+  }
+
+  .chat-message {
+    width: 80%;
+    min-height: 40px;
+    .right-bubble {
+    	position: relative;
+    	background: lightgray;
+      border-top-left-radius: .4em;
+      border-top-right-radius: .4em;
+      border-bottom-left-radius: .4em;
+      border-bottom-right-radius: .4em;
+      padding: 5px 10px 10px;
+      left: 15%;
+      p{
+        color:black;
+      }
+      span.msg-name {
+        padding: 0%;
+        font-size: 12px;
+        font-weight: bold;
+        color: gray;
+      }
+      span.msg-date {
+        padding: 0%;
+        font-size: 12px;
+        color: gray;
+      }
+    }
+
+    .left-bubble {
+    	position: relative;
+    	background: lightskyblue;
+      border-top-right-radius: .4em;
+      border-top-left-radius: .4em;
+      border-bottom-left-radius: .4em;
+      border-bottom-right-radius: .4em;
+      padding: 5px 10px 10px;
+      left: 5%;
+      p{
+        color:black;
+      }
+      span.msg-name {
+        font-size: 12px;
+        font-weight: bold;
+        color: gray;
+        text-align:left;
+      }
+      span.msg-date {
+        font-size: 12px;
+        text-align:left;
+        color: gray;
+      }
+    }
+  }
+}

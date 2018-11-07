@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{roomname}}
+
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only class="imgcontact">
+            <ion-icon name="image" end class="iconuser"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let chat of chats" no-lines>
+      <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
+        <span class="chat-date">{{chat.sendDate | date:'short'}}</span>
+        <span class="chat-content-center">{{chat.message}}</span>
+      </div>
+      <ng-template #message>
+        <div class="chat-message" text-right *ngIf="chat.user === nickname">
+          <div class="right-bubble">
+            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <p text-wrap>{{chat.message}}</p>
+          </div>
+        </div>
+        <div class="chat-message" text-left *ngIf="chat.user !== nickname">
+          <div class="left-bubble">
+            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <p text-wrap>{{chat.message}}</p>
+          </div>
+        </div>
+      </ng-template>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+        <ion-input type="text" placeholder="Escreva uma mensagem." [(ngModel)]="data.message" name="message"></ion-input>
+        <ion-icon name="paper-plane" (click)="sendMessage()"></ion-icon>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

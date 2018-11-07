@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Mensagens</ion-title>
+    <ion-title>
+      Mensagens
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-list>
-        <button ion-item *ngFor="let item of items" (click)="criaSession()">
-          <h1>{{ item.titulo }}</h1>
-          <p>{{item.texto}}</p>
-        </button>  
-      </ion-list>
-</ion-content>
+    <ion-content>
+        <ion-list class= "listchat" padding-top>
+            <ion-item *ngFor="let room of rooms" class="itemlista">
+              <ion-icon name="image" item-start></ion-icon>
+                {{room.roomname}}
+              <ion-icon name="arrow-forward" item-end (click)="joinRoom(room.key,room.roomname)"></ion-icon>
+            </ion-item>
+        </ion-list>
+      </ion-content>
