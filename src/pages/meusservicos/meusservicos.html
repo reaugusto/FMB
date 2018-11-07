@@ -17,7 +17,7 @@
           </ion-segment-button>
         </ion-segment>
       </div>
-      
+
       <div [ngSwitch]="mservicos">
 
         <ion-list *ngSwitchCase="'ativos'"><!-- criar o carregamento da lista a partir daqui-->
@@ -32,7 +32,7 @@
                 <p>{{ servicoAtivo.cpf }}</p>
                 <p>{{ servicoAtivo.id_proposta }}</p>
               </button>
-        
+
               <!-- <ion-item-options side="left">
                 <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
                   <ion-icon name="create"></ion-icon>
@@ -43,10 +43,10 @@
                   Remover
                 </button>
               </ion-item-options> -->
-        
+
             </ion-item-sliding>
-          
-          
+
+
         </ion-list>
 
         <ion-list *ngSwitchCase="'solicitados'"> <!-- criar o carregamento da lista a partir daqui-->
@@ -61,7 +61,7 @@
                 <p>{{ servico.cpf }}</p>
                 <p>{{ servico.id_proposta }}</p>
               </button>
-        
+
               <ion-item-options side="left">
                 <button ion-button color="primary" (click)="mostraServicoSingular(servico)">
                   <ion-icon name="create"></ion-icon>
@@ -72,9 +72,9 @@
                   Remover
                 </button>
               </ion-item-options>
-        
+
             </ion-item-sliding>
-          
+
         </ion-list>
       </div>
 

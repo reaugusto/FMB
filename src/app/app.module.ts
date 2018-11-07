@@ -31,6 +31,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SessionProvider } from '../providers/session/session';
 import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
 import { from } from 'rxjs';
+import { MsgsProvider } from '../providers/msgs/msgs';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { from } from 'rxjs';
     AuthProvider,
     UsuarioProvider,
     PropostaProvider,
-    SessionProvider
+    SessionProvider,
+    MsgsProvider
   ]
 })
 export class AppModule { }

@@ -12,9 +12,10 @@ import { SessionProvider } from '../../providers/session/session';
 })
 export class TabsPage {
 
-  tab1Root = MensagensPage;
-  tab2Root = ServicosPage;
-  tab3Root = MeusservicostPage;
+
+  tab1Root = ServicosPage;
+  tab2Root = MeusservicostPage;
+  tab3Root = MensagensPage;
   tab4Root = PerfilPage;
 
   constructor(public session: SessionProvider) {

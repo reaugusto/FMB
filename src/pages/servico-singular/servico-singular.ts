@@ -1,8 +1,11 @@
+import { MsgsProvider } from './../../providers/msgs/msgs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { ServicoProvider } from '../../providers/servico/servico';
 import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
+import * as firebase from 'Firebase';
+import { SessionProvider } from '../../providers/session/session';
 /**
  * Generated class for the ServicoSingularPage page.
  *
@@ -17,8 +20,9 @@ import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
 })
 export class ServicoSingularPage {
   servico: string;
+  email:any = this.session.resgataEmail()
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider,) {
     //recebendo o servico que foi clicado na pagina anterior
 
     this.servico = this.navParams.get('servico');
@@ -34,6 +38,16 @@ export class ServicoSingularPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicoSingularPage');
+  }
+
+  addChat(servico: any) {
+
+    let newData = firebase.database().ref('chatrooms/').push();
+    newData.set({
+      roomname:servico.detalhes,
+      user1: servico.email,
+      user2: this.email
+    });
   }
 
 }

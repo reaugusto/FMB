@@ -8,10 +8,17 @@
 
     <ion-content>
         <ion-list class= "listchat" padding-top>
-            <ion-item *ngFor="let room of rooms" class="itemlista">
+            <ion-item *ngFor="let room of rooms | async" class="itemlista">
               <ion-icon name="image" item-start></ion-icon>
                 {{room.roomname}}
               <ion-icon name="arrow-forward" item-end (click)="joinRoom(room.key,room.roomname)"></ion-icon>
             </ion-item>
         </ion-list>
+        <ion-list class= "listchat" padding-top>
+          <ion-item *ngFor="let room of rooms2 | async" class="itemlista">
+            <ion-icon name="image" item-start></ion-icon>
+              {{room.roomname}}
+            <ion-icon name="arrow-forward" item-end (click)="joinRoom(room.key,room.roomname)"></ion-icon>
+          </ion-item>
+      </ion-list>
       </ion-content>
