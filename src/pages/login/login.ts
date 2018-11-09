@@ -9,6 +9,8 @@ import { User } from '../../providers/auth/user';
 //importa a session
 import { SessionProvider } from '../../providers/session/session';
 import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { Observable } from 'rxjs';
 
 @IonicPage()
 @Component({
@@ -17,9 +19,12 @@ import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
 })
 export class LoginPage {
   user: User = new User();
+  userLog: Observable<any>;
   @ViewChild('form') form: NgForm;
 
-  constructor(private session: SessionProvider, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private toastCtrl: ToastController) {
+  constructor(private session: SessionProvider, public navCtrl: NavController, public navParams: NavParams,
+    private authProvider: AuthProvider, private toastCtrl: ToastController,
+    private usuarioLogado: UsuarioProvider) {
   }
 
   ionViewDidLoad() {
@@ -33,14 +38,18 @@ export class LoginPage {
   signIn(){
     if(this.form.form.valid){
       this.session.create(this.user);
-      //resgatar o email do usuario aqui para utilizar no ifelse abaixo
       this.session.get();
       this.authProvider.signIn(this.user)
       .then(() => {
-        //if (se ja existir uma key com o email desse usuario)
+        this.userLog = this.usuarioLogado.getLogado(this.user.email);
         this.navCtrl.setRoot(TabsPage);
-        //else
-        // this.navCtrl.setRoot(AtualizaperfilPage)
+        const y = this.userLog.subscribe(res => {
+          if(!res[0]){
+            let email = this.user.email;
+            this.navCtrl.push(AtualizaperfilPage, {email});
+          }
+          y.unsubscribe;
+        });
       })
       .catch((error:any) => {
         let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
@@ -57,10 +66,5 @@ export class LoginPage {
       })
     }
     
-  }
-
-  //apagar essa funcao de teste AQUI
-  teste(){
-    this.session.exist();
   }
 }

@@ -12,11 +12,20 @@ import { SessionProvider } from '../../providers/session/session';
 export class AtualizaperfilPage {
   form: FormGroup;
   usuario: any;
+  email: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private provider: UsuarioProvider,
     private toast:ToastController, private session: SessionProvider) {
-      this.usuario = this.navParams.data.b || {};
+      this.usuario = this.navParams.data.obj || {};
+      this.email = this.navParams.data.email;
       this.createForm();
+
+      //TODO
+      //if(!this.navParams.data.obj){
+        //desabilitar o botao de cancelar / voltar a pagina;
+      //} else {
+        //reabilitar o botao
+      //}
   }
 
   //habilitar apenas se ja existir um usuario criado com aquele cpf
@@ -34,7 +43,7 @@ export class AtualizaperfilPage {
       avaliacao: [this.usuario.avaliacao],//tirar isso daqui
       cep: [this.usuario.cep],
       numero: [this.usuario.numero],
-      email: [this.session.resgataEmail()],
+      email: [this.email],
       telefone: [this.usuario.telefone],
       saldo: [this.usuario.saldo]//tirar isso daqui
     })

@@ -22,9 +22,10 @@ export class PerfilPage {
   }
 
   atualizarPerfil(){
-    const y = this.usuario.getLogado(this.session.resgataEmail()).subscribe(res =>{
-      let b = res[0];
-      this.navCtrl.push(AtualizaperfilPage, {b});
+    let email = this.session.resgataEmail();
+    const y = this.usuario.getLogado(email).subscribe(res =>{
+      let obj = res[0];
+      this.navCtrl.push(AtualizaperfilPage, {obj, email});
       y.unsubscribe;
   });
 
