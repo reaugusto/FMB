@@ -1,7 +1,6 @@
 import { MsgsProvider } from './../../providers/msgs/msgs';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
 import { ServicoProvider } from '../../providers/servico/servico';
 import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
 import * as firebase from 'Firebase';
@@ -24,8 +23,6 @@ export class ServicoSingularPage {
   isenabled: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider,) {
-    //recebendo o servico que foi clicado na pagina anterior
-
     this.servico = this.navParams.get('servico');
     console.log(this.servico);
 
@@ -36,12 +33,6 @@ export class ServicoSingularPage {
       //disable the button
       this.isenabled=false;
       }
-
-
-
-    //recuperando o usuario da sessao com base no id passado pela pagina anterior
-    //this.servicos = this.provider.get(this.id_servico); // rever se é um observable que receberá o único objeto do BD
-
   }
 
   fazerProposta(){

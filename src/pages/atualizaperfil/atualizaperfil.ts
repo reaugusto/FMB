@@ -13,18 +13,20 @@ export class AtualizaperfilPage {
   form: FormGroup;
   usuario: any;
   email: any;
+  isenabled;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private provider: UsuarioProvider,
     private toast:ToastController, private session: SessionProvider) {
       this.usuario = this.navParams.data.obj || {};
       this.createForm();
 
-      //TODO
-      //if(!this.navParams.data.obj){
+      if(!this.navParams.data.obj){
         //desabilitar o botao de cancelar / voltar a pagina;
-      //} else {
+        this.isenabled=false;
+      } else {
         //reabilitar o botao
-      //}
+        this.isenabled=true;
+      }
   }
 
   //habilitar apenas se ja existir um usuario criado com aquele cpf

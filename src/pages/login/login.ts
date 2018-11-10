@@ -45,8 +45,7 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage);
         const y = this.userLog.subscribe(res => {
           if(!res[0]){
-            let email = this.user.email;
-            this.navCtrl.push(AtualizaperfilPage, {email});
+            this.navCtrl.push(AtualizaperfilPage);
           }
           y.unsubscribe;
         });

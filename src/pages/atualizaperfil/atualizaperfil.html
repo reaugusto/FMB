@@ -60,7 +60,7 @@
     </button>
 
 
-    <button ion-button outline item-end icon-start class="b1" (click)="cancel()">
+    <button ion-button outline item-end icon-start class="b1" (click)="cancel()"[disabled]="!isenabled">
       <ion-icon name="close-circle"></ion-icon>
       Cancelar
     </button>
