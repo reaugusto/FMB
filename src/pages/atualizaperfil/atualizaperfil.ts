@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { SessionProvider } from '../../providers/session/session';
 
@@ -17,7 +17,6 @@ export class AtualizaperfilPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private provider: UsuarioProvider,
     private toast:ToastController, private session: SessionProvider) {
       this.usuario = this.navParams.data.obj || {};
-      this.email = this.navParams.data.email;
       this.createForm();
 
       //TODO
@@ -37,13 +36,13 @@ export class AtualizaperfilPage {
   createForm() {
     this.form = this.formBuilder.group({
       key: [this.usuario.key],
-      cpf: [this.usuario.cpf],
-      nome: [this.usuario.nome],
+      cpf: [this.usuario.cpf, Validators.required],
+      nome: [this.usuario.nome, Validators.required],
       sobrenome: [this.usuario.sobrenome],
       avaliacao: [this.usuario.avaliacao],//tirar isso daqui
-      cep: [this.usuario.cep],
-      numero: [this.usuario.numero],
-      email: [this.email],
+      cep: [this.usuario.cep, Validators.required],
+      numero: [this.usuario.numero, Validators.required],
+      email: [this.session.resgataEmail()],
       telefone: [this.usuario.telefone],
       saldo: [this.usuario.saldo]//tirar isso daqui
     })

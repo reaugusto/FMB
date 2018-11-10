@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SessionProvider } from '../../providers/session/session';
 import { PropostaProvider } from '../../providers/proposta/proposta';
 
@@ -35,10 +35,10 @@ export class FazerpropostaPage {
   createForm() {
     this.form = this.formBuilder.group({
       key: [this.proposta.key],
-      tempo_entrega: [this.proposta.tempo_entrega],
-      valor: [this.proposta.valor],
+      tempo_entrega: [this.proposta.tempo_entrega, Validators.required],
+      valor: [this.proposta.valor, Validators.required],
       id_servico: [this.servico.key],// fala que tem erro aqui mas funciona
-      cpf: [this.proposta.cpf],
+      cpf: [this.proposta.cpf],// talvez nao seja necessario
       email: [this.session.resgataEmail()]
 
       //detalhes: [this.proposta.detalhes],// analisar

@@ -101,11 +101,11 @@ export class CadastraservicoPage {
     this.form = this.formBuilder.group({
       key: [this.servico.key],
       id_servico: [this.servico.id_servico],//recebe uma key
-      categoria: [this.servico.categoria],
-      detalhes: [this.servico.detalhes],
-      orcamento: [this.servico.orcamento],
-      tipo: [this.servico.tipo],
-      titulo: [this.servico.titulo],
+      categoria: [this.servico.categoria, Validators.required],
+      detalhes: [this.servico.detalhes, Validators.required],
+      orcamento: [this.servico.orcamento, Validators.required],
+      tipo: [this.servico.tipo, Validators.required],
+      titulo: [this.servico.titulo, Validators.required],
       email: [this.session.resgataEmail()],//recebe o email do usuario
       id_proposta: [this.servico.id_proposta],//tirar isso daqui (deixar apenas para evitar erros por enquanto)
     })

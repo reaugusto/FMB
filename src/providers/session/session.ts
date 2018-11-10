@@ -2,11 +2,12 @@ import { Storage } from "@ionic/storage";
 //import { UsuarioProvider } from '../usuario/usuario';
 import { User } from '../auth/user'
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Injectable()
 export class SessionProvider {
   public teste:string;
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private angularFireAuth: AngularFireAuth) { }
 
   create(usuario: User) {
     //salvar apenas email por questoes de seguranca
@@ -19,7 +20,8 @@ export class SessionProvider {
   }
 
   resgataEmail(): string {
-    console.log('1')
+    return this.angularFireAuth.auth.currentUser.email;
+    /*console.log('1')
     this.get().then(async (val:string) => {
       this.teste = await val;
       await console.log('2');
@@ -27,7 +29,7 @@ export class SessionProvider {
     });
     console.log('3');
     console.log("FORA >>", this.teste);
-    return this.teste;
+    return this.teste;*/
   }
 
   remove() {

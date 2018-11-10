@@ -25,7 +25,7 @@ export class PerfilPage {
     let email = this.session.resgataEmail();
     const y = this.usuario.getLogado(email).subscribe(res =>{
       let obj = res[0];
-      this.navCtrl.push(AtualizaperfilPage, {obj, email});
+      this.navCtrl.push(AtualizaperfilPage, {obj});
       y.unsubscribe;
   });
 
