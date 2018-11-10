@@ -19,14 +19,26 @@ import { SessionProvider } from '../../providers/session/session';
   templateUrl: 'servico-singular.html',
 })
 export class ServicoSingularPage {
-  servico: string;
+  servico: any;
   email:any = this.session.resgataEmail()
+  isenabled: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider,) {
     //recebendo o servico que foi clicado na pagina anterior
 
     this.servico = this.navParams.get('servico');
     console.log(this.servico);
+
+    if(this.servico.email !== this.email){
+      //enable the button
+      this.isenabled=true; 
+      }else{
+      //disable the button
+      this.isenabled=false;
+      }
+
+
+
     //recuperando o usuario da sessao com base no id passado pela pagina anterior
     //this.servicos = this.provider.get(this.id_servico); // rever se é um observable que receberá o único objeto do BD
 
