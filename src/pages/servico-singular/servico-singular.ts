@@ -27,6 +27,19 @@ export class ServicoSingularPage {
     this.servico = this.navParams.get('servico');
     console.log(this.servico);
 
+    /*    if(this.servico.email === this.email && this.servico.id_proposta){
+      this.fimServico = true;
+      this.isenabled = false;
+    } else if (this.servico.email !== this.email && this.servico.id_proposta){
+      this.fimServico = false;
+      this.isenabled = false;
+    } else if (this.servico.email !== this.email && !this.servico.id_proposta){
+      this.fimServico = false;
+      this.isenabled = true;
+    } else if (this.servico.email === this.email && !this.servico.id_proposta){
+      this.fimServico = false;
+      this.isenabled = false;
+    }*/
     
 
     if (this.servico.email !== this.email) {

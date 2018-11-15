@@ -83,8 +83,18 @@ export class PropostaProvider {
     });
   }
 
-  remove(key: string){//apaga do banco
+  remove(key: any){//apaga do banco
     return this.db.list(this.PATH).remove(key);
+  }
+
+  removePropostasDoServico(id_servico){
+    let propostas = this.getPropostasServicos(id_servico);
+      propostas.forEach(val => {
+        for (let i=0; i<val.length ;i++){
+        this.remove(val[i].key);
+        }
+        
+      });
   }
 
 }

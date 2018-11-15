@@ -6,6 +6,7 @@ import { ServicoProvider } from '../../providers/servico/servico';
 import { SessionProvider } from '../../providers/session/session';
 import { ServicoSingularPage } from '../servico-singular/servico-singular';
 import { PropostasMeuServicoPage } from '../propostas-meu-servico/propostas-meu-servico';
+import { PropostaProvider } from '../../providers/proposta/proposta';
 
 
 @Component({
@@ -18,10 +19,10 @@ export class MeusservicostPage {
   email:any = this.session.resgataEmail()
   mservicos: any;
 
-  constructor(public navCtrl: NavController, private provider: ServicoProvider, private session: SessionProvider,
-    private alertController: AlertController) {
-      this.meusServicos = this.provider.getMeusServicos(this.email);
-      this.servicosAtivos = this.provider.getServicosAtivos(this.email);
+  constructor(public navCtrl: NavController, private servicoProvider: ServicoProvider, private session: SessionProvider,
+    private alertController: AlertController, private propostaProvider: PropostaProvider) {
+      this.meusServicos = this.servicoProvider.getMeusServicos(this.email);
+      this.servicosAtivos = this.servicoProvider.getServicosAtivos(this.email);
       this.mservicos = "ativos";
   }
 
@@ -56,7 +57,8 @@ export class MeusservicostPage {
         {
           text: "Aceitar",
           handler: ()=>{
-              this.provider.remove(servico.key);
+              this.propostaProvider.removePropostasDoServico(servico.key);
+              this.servicoProvider.remove(servico.key);
           }
         }]
     })
