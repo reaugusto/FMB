@@ -19,24 +19,32 @@ import { SessionProvider } from '../../providers/session/session';
 })
 export class ServicoSingularPage {
   servico: any;
-  email:any = this.session.resgataEmail()
+  email: any = this.session.resgataEmail()
   isenabled: any;
+  fimServico: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider, ) {
     this.servico = this.navParams.get('servico');
     console.log(this.servico);
 
-    if(this.servico.email !== this.email){
+    
+
+    if (this.servico.email !== this.email) {
       //enable the button
-      this.isenabled=true; 
-      }else{
+      this.isenabled = true;   
+    } else {
       //disable the button
-      this.isenabled=false;
+      this.isenabled = false;
+
+      if (this.servico.id_proposta) { //habilita finalizar servico apenas quando ja existe proposta
+        this.fimServico = true;
       }
+
+    }
   }
 
-  fazerProposta(){
-    this.navCtrl.push(FazerpropostaPage, {servico: this.servico});
+  fazerProposta() {
+    this.navCtrl.push(FazerpropostaPage, { servico: this.servico });
   }
 
   ionViewDidLoad() {
@@ -47,10 +55,16 @@ export class ServicoSingularPage {
 
     let newData = firebase.database().ref('chatrooms/').push();
     newData.set({
-      roomname:servico.detalhes,
+      roomname: servico.detalhes,
       user1: servico.email,
       user2: this.email
     });
+  }
+
+  finalizarServico(servico: any) {
+    //aceitou que o servico foi entregue
+    //enviar resposta positiva para o lado do requisitor da transacao
+    console.log("funcionou " + servico.key);
   }
 
 }

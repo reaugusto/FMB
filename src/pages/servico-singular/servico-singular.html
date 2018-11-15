@@ -24,14 +24,19 @@
   <p>{{ servico.cpf }}</p>
   <p>{{ servico.id_proposta }}</p>
 
-  <button ion-button color="secondary" (click)="fazerProposta()" [disabled]="!isenabled">
+  <button ion-button color="secondary" (click)="fazerProposta()" [hidden]="!isenabled">
     <ion-icon name=""></ion-icon>
     Fazer proposta
   </button><br>
 
-  <button ion-button color="primary" (click)="addChat(servico)" [disabled]="!isenabled">
+  <button ion-button color="primary" (click)="addChat(servico)" [hidden]="!isenabled">
     <ion-icon name="text"></ion-icon>
     Enviar mensagem
+  </button>
+
+  <button ion-button color="primary" (click)="finalizarServico(servico)" [hidden]="!fimServico">
+    <ion-icon name=""></ion-icon>
+    Finalizar serviço
   </button>
 
 

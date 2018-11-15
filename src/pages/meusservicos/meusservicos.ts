@@ -36,8 +36,12 @@ export class MeusservicostPage {
     
   }
 
-  servicoPropostas(servico: any){
+  PropostasEFinalizar(servico: any){
+    if(servico.id_proposta){
+      this.navCtrl.push(ServicoSingularPage, {servico});
+    } else {
     this.navCtrl.push(PropostasMeuServicoPage , {servico});
+    }
   }
 
   removeServico(servico: any){

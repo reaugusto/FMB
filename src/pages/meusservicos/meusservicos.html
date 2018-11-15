@@ -51,7 +51,7 @@
 
         <ion-list *ngSwitchCase="'solicitados'"> <!-- criar o carregamento da lista a partir daqui-->
           <ion-item-sliding *ngFor="let servico of meusServicos | async">
-              <button ion-item clear (click)="servicoPropostas(servico)">
+              <button ion-item clear (click)="PropostasEFinalizar(servico)">
                 <h1>{{ servico.categoria }}</h1>
                 <p>{{ servico.id_servico }}</p>
                 <p>{{ servico.detalhes }}</p>

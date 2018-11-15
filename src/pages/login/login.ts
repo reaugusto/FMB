@@ -47,7 +47,7 @@ export class LoginPage {
           if(!res[0]){
             this.navCtrl.push(AtualizaperfilPage);
           }
-          y.unsubscribe;
+          y.unsubscribe();
         });
       })
       .catch((error:any) => {
