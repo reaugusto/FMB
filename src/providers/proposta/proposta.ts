@@ -89,12 +89,23 @@ export class PropostaProvider {
 
   removePropostasDoServico(id_servico){
     let propostas = this.getPropostasServicos(id_servico);
+    
       propostas.forEach(val => {
         for (let i=0; i<val.length ;i++){
         this.remove(val[i].key);
         }
-        
       });
   }
 
+  removeUponAccept(proposta: any , servico: any){
+    let todasPropostas = this.getPropostasServicos(servico.key);
+    
+      todasPropostas.forEach(val => {
+        for (let i=0; i<val.length ;i++){
+          if(val[i].key !== proposta){
+            this.remove(val[i].key);
+          }
+        }
+      });
+  }
 }

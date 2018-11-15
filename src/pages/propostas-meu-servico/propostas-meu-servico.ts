@@ -45,6 +45,7 @@ export class PropostasMeuServicoPage {
           text: "Aceitar",
           handler: ()=>{
               this.servicoProvider.aceitaProposta(this.servico, proposta.key, proposta.email);
+              this.provider.removeUponAccept(proposta.key, this.servico);
               this.navCtrl.pop();
           }
         }]
