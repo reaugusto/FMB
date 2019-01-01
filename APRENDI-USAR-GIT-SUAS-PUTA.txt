@@ -46,10 +46,13 @@ criaSession() {
     /*this.session.get()
         .then(res => {
           this.usuarioLogado = new User(res);
-          console.log('usuário logado  >>> ',this.usuarioLogado);
+          console.log('usuï¿½rio logado  >>> ',this.usuarioLogado);
       });*/
     /*this.session.resgataEmail();
     console.log(this.session.resgataEmail());*/
     this.navCtrl.push(AtualizaperfilPage);
     //console.log(this.usuarioLogado);
   }
+
+//Atualizacao
+  npm i -g ionic

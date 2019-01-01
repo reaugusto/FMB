@@ -1,6 +1,6 @@
 import { MsgsProvider } from './../../providers/msgs/msgs';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ServicoProvider } from '../../providers/servico/servico';
 import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
 import * as firebase from 'Firebase';
@@ -23,7 +23,8 @@ export class ServicoSingularPage {
   isenabled: any;
   fimServico: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private provider: ServicoProvider, private session: SessionProvider, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private servicoProvider: ServicoProvider,
+    private session: SessionProvider, private alertController: AlertController) {
     this.servico = this.navParams.get('servico');
     console.log(this.servico);
 
@@ -40,11 +41,11 @@ export class ServicoSingularPage {
       this.fimServico = false;
       this.isenabled = false;
     }*/
-    
+
 
     if (this.servico.email !== this.email) {
       //enable the button
-      this.isenabled = true;   
+      this.isenabled = true;
     } else {
       //disable the button
       this.isenabled = false;
@@ -77,7 +78,30 @@ export class ServicoSingularPage {
   finalizarServico(servico: any) {
     //aceitou que o servico foi entregue
     //enviar resposta positiva para o lado do requisitor da transacao
-    console.log("funcionou " + servico.key);
+
+    let addAlert = this.alertController.create({
+      title: "Confirmação",
+      message: "Tem certeza que deseja remover este servico?",
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: "Aceitar",
+          handler: () => {
+            this.servicoProvider.requisitorFinaliza(servico, true);
+            
+            if(servico.oferecedorFinalizou){
+              //TODO
+              //passar o saldo para o oferecedor
+            }
+
+          }
+        }]
+    })
+    addAlert.present();
+
   }
 
 }

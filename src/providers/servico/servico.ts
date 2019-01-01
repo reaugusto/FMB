@@ -105,6 +105,36 @@ export class ServicoProvider {
     });
   }
 
+
+
+
+
+  requisitorFinaliza(servico:any, requisitorFinalizou:any){
+    return new Promise((resolve, reject) => {
+        this.db.list(this.PATH)
+          .update(servico.key, {
+            requisitorFinalizou: requisitorFinalizou
+          })
+          .then(() => resolve())
+          .catch((e) => reject(e));
+    });
+  }
+
+  oferecedorFinaliza(servico:any, oferecedorFinalizou:any){
+    return new Promise((resolve, reject) => {
+        this.db.list(this.PATH)
+          .update(servico.key, {
+            oferecedorFinalizou: oferecedorFinalizou
+          })
+          .then(() => resolve())
+          .catch((e) => reject(e));
+    });
+  }
+
+
+
+
+
   remove(key: string) {//apaga do banco
     return this.db.list(this.PATH).remove(key);
   }
