@@ -66,8 +66,8 @@ export class MeusservicostPage {
   }
 
   //ATIVOS
-  testeAtivos(){
-    console.log("funcionou");
+  testeAtivos(servico: any){
+    this.navCtrl.push(ServicoSingularPage, {servico});
   }
 
 }

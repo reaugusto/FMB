@@ -49,12 +49,17 @@ export class ServicoSingularPage {
     } else {
       //disable the button
       this.isenabled = false;
-
-      if (this.servico.id_proposta) { //habilita finalizar servico apenas quando ja existe proposta
-        this.fimServico = true;
-      }
-
     }
+
+    if (this.servico.id_proposta) {
+      //habilita finalizar servico apenas quando ja existe proposta
+      this.isenabled = false;
+      this.fimServico = true;
+    }
+
+
+
+
   }
 
   fazerProposta() {
@@ -91,8 +96,8 @@ export class ServicoSingularPage {
           text: "Aceitar",
           handler: () => {
             this.servicoProvider.requisitorFinaliza(servico, true);
-            
-            if(servico.oferecedorFinalizou){
+
+            if (servico.oferecedorFinalizou) {
               //TODO
               //passar o saldo para o oferecedor
             }
