@@ -26,6 +26,7 @@ export class ServicoSingularPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private servicoProvider: ServicoProvider,
     private session: SessionProvider, private alertController: AlertController) {
     this.servico = this.navParams.get('servico');
+
     console.log(this.servico);
 
     /*    if(this.servico.email === this.email && this.servico.id_proposta){
@@ -84,28 +85,65 @@ export class ServicoSingularPage {
     //aceitou que o servico foi entregue
     //enviar resposta positiva para o lado do requisitor da transacao
 
-    let addAlert = this.alertController.create({
-      title: "Confirmação",
-      message: "Tem certeza que deseja remover este servico?",
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel'
-        },
-        {
-          text: "Aceitar",
-          handler: () => {
-            this.servicoProvider.requisitorFinaliza(servico, true);
 
-            if (servico.oferecedorFinalizou) {
-              //TODO
-              //passar o saldo para o oferecedor
+    console.log("email: " + this.email);
+    console.log("servico: " + this.servico.email);
+
+    if(this.email === this.servico.email){
+      let addAlert = this.alertController.create({
+        title: "Confirmação",
+        message: "Tem certeza que deseja finalizar este servico?",
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel'
+          },
+          {
+            text: "Aceitar",
+            handler: () => {
+              this.servicoProvider.requisitorFinaliza(servico, true);
+  
+              if (servico.oferecedorFinaliza) {
+                //TODO
+                //passar o saldo para o oferecedor
+                //tela de avaliacao de contraparte
+              }
+  
             }
+          }]
+      })
 
-          }
-        }]
-    })
-    addAlert.present();
+      addAlert.present();
+
+
+    }else{
+      let addAlert = this.alertController.create({
+        title: "Confirmação",
+        message: "Tem certeza que deseja finalizar este servico?",
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel'
+          },
+          {
+            text: "Aceitar",
+            handler: () => {
+              this.servicoProvider.oferecedorFinaliza(servico, true);
+  
+              if (servico.requisitorFinaliza) {
+                //TODO
+                //passar o saldo para o oferecedor
+                //tela de avaliacao de contraparte
+              }
+  
+            }
+          }]
+      })
+
+      addAlert.present();
+
+
+    }
 
   }
 

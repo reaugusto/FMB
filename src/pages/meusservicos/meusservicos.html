@@ -22,7 +22,7 @@
 
         <ion-list *ngSwitchCase="'ativos'"><!-- criar o carregamento da lista a partir daqui-->
           <ion-item-sliding *ngFor="let servicoAtivo of servicosAtivos | async">
-              <button ion-item clear (click)="testeAtivos(servicoAtivo)">
+              <button ion-item clear (click)="meusAtivos(servicoAtivo)">
                 <h1>{{ servicoAtivo.categoria }}</h1>
                 <p>{{ servicoAtivo.id_servico }}</p>
                 <p>{{ servicoAtivo.detalhes }}</p>

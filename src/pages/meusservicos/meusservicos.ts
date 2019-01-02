@@ -66,7 +66,7 @@ export class MeusservicostPage {
   }
 
   //ATIVOS
-  testeAtivos(servico: any){
+  meusAtivos(servico: any){
     this.navCtrl.push(ServicoSingularPage, {servico});
   }
 

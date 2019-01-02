@@ -36,6 +36,8 @@ export class LoginPage {
   }
 
   signIn(){
+
+    //validar o formulario antes de entrar diretamente e o que causa o bug de passar pela tela inicial primeiramente
     if(this.form.form.valid){
       this.session.create(this.user);
       this.session.get();
