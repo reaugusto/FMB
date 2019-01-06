@@ -86,10 +86,12 @@ export class ServicoSingularPage {
     //enviar resposta positiva para o lado do requisitor da transacao
 
 
+    //AQUI -> quando a tela ja esta aberta, o valor de finalizacao das partes nao carrega, logo, nao funciona a transacao. 
+
     console.log("email: " + this.email);
     console.log("servico: " + this.servico.email);
 
-    if(this.email === this.servico.email){
+    if(this.email === this.servico.email){//se quem pediu o servico finaliza
       let addAlert = this.alertController.create({
         title: "Confirmação",
         message: "Tem certeza que deseja finalizar este servico?",
@@ -103,9 +105,10 @@ export class ServicoSingularPage {
             handler: () => {
               this.servicoProvider.requisitorFinaliza(servico, true);
   
-              if (servico.oferecedorFinaliza) {
+              if (servico.oferecedorFinalizou) {
+                console.log("scascascascascACSSCAASCascascasc");
                 //TODO
-                //passar o saldo para o oferecedor
+                //enviar o saldo para o oferecedor de servico
                 //tela de avaliacao de contraparte
               }
   
@@ -130,9 +133,10 @@ export class ServicoSingularPage {
             handler: () => {
               this.servicoProvider.oferecedorFinaliza(servico, true);
   
-              if (servico.requisitorFinaliza) {
+              if (servico.requisitorFinalizou) {
+                console.log("scascascascascACSSCAASCascascasc");
                 //TODO
-                //passar o saldo para o oferecedor
+                //recebe o saldo do requisitor
                 //tela de avaliacao de contraparte
               }
   

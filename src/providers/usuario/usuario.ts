@@ -41,7 +41,7 @@ export class UsuarioProvider {
           numero: usuario.numero,
           email: usuario.email,
           telefone: usuario.telefone,
-          saldo: usuario.saldo
+          saldo: usuario.saldo // ver se realmente sera necessaria essa linha de codigo
         })
         .then(() => resolve())
         .catch((e) => reject(e));
@@ -56,12 +56,25 @@ export class UsuarioProvider {
           numero: usuario.numero,
           email: usuario.email,
           telefone: usuario.telefone,
-          saldo: usuario.saldo
+          saldo: 0
         })
         .then(() => resolve());
       }
 
     });
+  }
+
+  adicionarSaldo(saldoAdicionado, usuario){
+    let saldoFinal = usuario.saldo + saldoAdicionado;
+    saldoFinal = Math.round(saldoFinal*100) / 100;
+    return new Promise((resolve, reject) => {
+      this.db.list(this.PATH)
+        .update(usuario.key, {
+          saldo: saldoFinal
+        })
+        .then(() => resolve())
+        .catch((e) => reject(e));
+  });
   }
 
   remove(key: string){//apaga do banco

@@ -26,13 +26,31 @@ export class PerfilPage {
     const y = this.usuario.getLogado(email).subscribe(res =>{
       let obj = res[0];
       this.navCtrl.push(AtualizaperfilPage, {obj});
-      y.unsubscribe;
+      y.unsubscribe();
   });
 
     //  for(let data of this.x) {
     //    console.log("cep aqui !>" + data.cep);
     //  }
     //this.navCtrl.push(AtualizaperfilPage);
+  }
+
+  adicionarSaldo(){
+    let email = this.session.resgataEmail();
+    const y = this.usuario.getLogado(email).subscribe(res =>{
+      let obj = res[0];
+
+
+
+      this.usuario.adicionarSaldo(0.1,obj);
+
+
+      
+      console.log("key usuario: "+obj.key);
+      y.unsubscribe();
+    });
+
+    console.log("10 cents adicionados");
   }
 
   signOut(){
