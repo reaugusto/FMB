@@ -119,22 +119,22 @@ export class ServicoProvider {
 
 
 
-  requisitorFinaliza(servico:any, requisitorFinalizou:any){
+  requisitorFinaliza(servico:any){
     return new Promise((resolve, reject) => {
         this.db.list(this.PATH)
           .update(servico.key, {
-            requisitorFinalizou: requisitorFinalizou
+            requisitorFinalizou: true
           })
           .then(() => resolve())
           .catch((e) => reject(e));
     });
   }
 
-  oferecedorFinaliza(servico:any, oferecedorFinalizou:any){
+  oferecedorFinaliza(servico:any){
     return new Promise((resolve, reject) => {
         this.db.list(this.PATH)
           .update(servico.key, {
-            oferecedorFinalizou: oferecedorFinalizou
+            oferecedorFinalizou: true
           })
           .then(() => resolve())
           .catch((e) => reject(e));

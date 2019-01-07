@@ -109,8 +109,7 @@ export class ServicoSingularPage {
                 let servicoRequisitado: any;
                 servicoRequisitado = res[0];
 
-                //fazer o true nao ser passado como parametro mas adicionado diretamente no provider Servico
-                this.servicoProvider.requisitorFinaliza(servico, true);
+                this.servicoProvider.requisitorFinaliza(servico);
 
                 if(servicoRequisitado.oferecedorFinalizou){
                   console.log("O oferecedor ja finalizou");
@@ -143,8 +142,7 @@ export class ServicoSingularPage {
                 let servicoOferecido: any;
                 servicoOferecido = res[0];
                 
-                //fazer o true nao ser passado como parametro mas adicionado diretamente no provider Servico
-                this.servicoProvider.oferecedorFinaliza(servico, true);
+                this.servicoProvider.oferecedorFinaliza(servico);
 
                 if(servicoOferecido.requisitorFinalizou){
                   console.log("O requisitor ja finalizou");
