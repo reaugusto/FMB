@@ -82,6 +82,7 @@ export class ServicoSingularPage {
   }
 
   finalizarServico(servico: any) {
+    
     //aceitou que o servico foi entregue
     //enviar resposta positiva para o lado do requisitor da transacao
 
@@ -92,8 +93,8 @@ export class ServicoSingularPage {
     console.log("servico: " + this.servico.email);
 
     if(this.email === this.servico.email){//se quem pediu o servico finaliza
-      let addAlert = this.alertController.create({
-        title: "Confirmação",
+      let AlertPedindo = this.alertController.create({
+        title: "Pedindo",
         message: "Tem certeza que deseja finalizar este servico?",
         buttons: [
           {
@@ -103,25 +104,31 @@ export class ServicoSingularPage {
           {
             text: "Aceitar",
             handler: () => {
-              this.servicoProvider.requisitorFinaliza(servico, true);
-  
-              if (servico.oferecedorFinalizou) {
-                console.log("scascascascascACSSCAASCascascasc");
-                //TODO
-                //enviar o saldo para o oferecedor de servico
-                //tela de avaliacao de contraparte
-              }
-  
+
+              let finalizarRequisicao = this.servicoProvider.getServicoFim(servico.email).subscribe(res => {
+                let servicoRequisitado: any;
+                servicoRequisitado = res[0];
+
+                //fazer o true nao ser passado como parametro mas adicionado diretamente no provider Servico
+                this.servicoProvider.requisitorFinaliza(servico, true);
+
+                if(servicoRequisitado.oferecedorFinalizou){
+                  console.log("O oferecedor ja finalizou");
+                  //enviar o saldo para o oferecedor de servico
+                  //tela de avaliacao de contraparte
+                }
+
+                finalizarRequisicao.unsubscribe();
+              });
+
             }
           }]
       })
-
-      addAlert.present();
-
+      AlertPedindo.present();
 
     }else{
-      let addAlert = this.alertController.create({
-        title: "Confirmação",
+      let AlertOferecendo = this.alertController.create({
+        title: "Oferecendo",
         message: "Tem certeza que deseja finalizar este servico?",
         buttons: [
           {
@@ -131,20 +138,28 @@ export class ServicoSingularPage {
           {
             text: "Aceitar",
             handler: () => {
-              this.servicoProvider.oferecedorFinaliza(servico, true);
-  
-              if (servico.requisitorFinalizou) {
-                console.log("scascascascascACSSCAASCascascasc");
-                //TODO
-                //recebe o saldo do requisitor
-                //tela de avaliacao de contraparte
-              }
+
+              let finalizarOferecimento = this.servicoProvider.getServicoFim(servico.email).subscribe(res => {
+                let servicoOferecido: any;
+                servicoOferecido = res[0];
+                
+                //fazer o true nao ser passado como parametro mas adicionado diretamente no provider Servico
+                this.servicoProvider.oferecedorFinaliza(servico, true);
+
+                if(servicoOferecido.requisitorFinalizou){
+                  console.log("O requisitor ja finalizou");
+                  //enviar o saldo para o oferecedor de servico
+                  //tela de avaliacao de contraparte
+                }
+
+                finalizarOferecimento.unsubscribe();
+              });
   
             }
           }]
       })
 
-      addAlert.present();
+      AlertOferecendo.present();
 
 
     }
