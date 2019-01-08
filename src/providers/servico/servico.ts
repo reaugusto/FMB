@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { PropostaProvider } from '../proposta/proposta';
 
 @Injectable()
 export class ServicoProvider {
@@ -103,12 +104,13 @@ export class ServicoProvider {
     });
   }
 
-  aceitaProposta(servico:any, id_proposta:any, emailPropositor:any){
+  aceitaProposta(servico:any, proposta:any){
     return new Promise((resolve, reject) => {
         this.db.list(this.PATH)
           .update(servico.key, {
-            id_proposta: id_proposta,
-            emailPropositor: emailPropositor
+            id_proposta: proposta.key,
+            emailPropositor: proposta.email,
+            valorFinal: proposta.valor
           })
           .then(() => resolve())
           .catch((e) => reject(e));
