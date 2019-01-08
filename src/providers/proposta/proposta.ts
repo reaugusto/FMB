@@ -61,7 +61,7 @@ export class PropostaProvider {
         this.db.list(this.PATH)
         .update(proposta.key, { //id_proposta será a key gerada
           tempo_entrega: proposta.tempo_entrega,
-          valor: proposta.valor,
+          valor: parseFloat(proposta.valor),
           id_servico: proposta.id_servico,
           cpf: proposta.cpf,
           email: proposta.email
@@ -72,7 +72,7 @@ export class PropostaProvider {
         this.db.list(this.PATH)
         .push({ //id_proposta será a key gerada
           tempo_entrega: proposta.tempo_entrega,
-          valor: proposta.valor,
+          valor: parseFloat(proposta.valor),
           id_servico: proposta.id_servico,
           cpf: proposta.cpf,
           email: proposta.email
@@ -87,6 +87,7 @@ export class PropostaProvider {
     return this.db.list(this.PATH).remove(key);
   }
 
+  //rever essa funcao
   removePropostasDoServico(id_servico){
     let propostas = this.getPropostasServicos(id_servico);
     
