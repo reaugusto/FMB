@@ -106,6 +106,8 @@ export class ServicoSingularPage {
                 if(servicoRequisitado.oferecedorFinalizou){//se ja esta pronto para entregar o servico
                   console.log("O oferecedor ja finalizou");
                   //enviar o saldo para o oferecedor de servico
+
+                  
                   let usuario = this.usuarioProvider.getLogado(servicoRequisitado.email).subscribe(val => {
                     let usuarioPaga: any;
                     usuarioPaga = val[0];
@@ -116,6 +118,8 @@ export class ServicoSingularPage {
 
                     if(usuarioPaga.saldo >= servicoRequisitado.valorFinal){
                       console.log("Efetua pagamento")
+                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoRequisitado.valorFinal);
+                      //fazer a tela do servico sumir apos pagamento efetuado
                     } else {
                       console.log("Abrir API para pagamento")
                     }
@@ -165,6 +169,8 @@ export class ServicoSingularPage {
                     
                     if(usuarioPaga.saldo >= servicoOferecido.valorFinal){
                       console.log("Efetua pagamento")
+                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido.valorFinal);
+                      //fazer a tela do servico sumir apos pagamento efetuado
                     } else {
                       console.log("Abrir API para pagamento")
                     }

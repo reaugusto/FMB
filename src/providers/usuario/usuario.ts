@@ -9,7 +9,8 @@ export class UsuarioProvider {
 
   constructor(private db: AngularFireDatabase){ }
 
-  getLogado(email){ //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
+  //mudar nome dessa funcao para getUsuario
+  getLogado(email){
     return this.db.list(this.PATH, ref => ref.orderByChild("email").equalTo(email).limitToFirst(1))
       .snapshotChanges()
       .map(changes => {
@@ -67,6 +68,21 @@ export class UsuarioProvider {
   adicionarSaldo(saldoAdicionado, usuario){
     let saldoFinal = usuario.saldo + saldoAdicionado;
     saldoFinal = Math.round(saldoFinal*100) / 100;
+    
+    return new Promise((resolve, reject) => {
+      this.db.list(this.PATH)
+        .update(usuario.key, {
+          saldo: saldoFinal
+        })
+        .then(() => resolve())
+        .catch((e) => reject(e));
+  });
+  }
+  
+  efetuarPagamento(usuario, valor){
+    let saldoFinal = usuario.saldo - valor;
+    saldoFinal = Math.round(saldoFinal*100) / 100;
+
     return new Promise((resolve, reject) => {
       this.db.list(this.PATH)
         .update(usuario.key, {
