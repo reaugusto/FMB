@@ -5,6 +5,7 @@ import { ServicoProvider } from '../../providers/servico/servico';
 import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
 import * as firebase from 'Firebase';
 import { SessionProvider } from '../../providers/session/session';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 /**
  * Generated class for the ServicoSingularPage page.
  *
@@ -24,7 +25,7 @@ export class ServicoSingularPage {
   fimServico: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private servicoProvider: ServicoProvider,
-    private session: SessionProvider, private alertController: AlertController) {
+    private session: SessionProvider, private alertController: AlertController, private usuarioProvider: UsuarioProvider) {
     this.servico = this.navParams.get('servico');
 
     console.log(this.servico);
@@ -82,15 +83,6 @@ export class ServicoSingularPage {
   }
 
   finalizarServico(servico: any) {
-    
-    //aceitou que o servico foi entregue
-    //enviar resposta positiva para o lado do requisitor da transacao
-
-
-    //AQUI -> quando a tela ja esta aberta, o valor de finalizacao das partes nao carrega, logo, nao funciona a transacao. 
-
-    console.log("email: " + this.email);
-    console.log("servico: " + this.servico.email);
 
     if(this.email === this.servico.email){//se quem pediu o servico finaliza
       let AlertPedindo = this.alertController.create({
@@ -104,16 +96,33 @@ export class ServicoSingularPage {
           {
             text: "Aceitar",
             handler: () => {
-
-              let finalizarRequisicao = this.servicoProvider.getServicoFim(servico.email).subscribe(res => {
+              
+              let finalizarRequisicao = this.servicoProvider.getServicoFim(servico.key).subscribe(res => {
                 let servicoRequisitado: any;
-                servicoRequisitado = res[0];
-
+                servicoRequisitado = res;
+                
                 this.servicoProvider.requisitorFinaliza(servico);
 
-                if(servicoRequisitado.oferecedorFinalizou){
+                if(servicoRequisitado.oferecedorFinalizou){//se ja esta pronto para entregar o servico
                   console.log("O oferecedor ja finalizou");
                   //enviar o saldo para o oferecedor de servico
+                  let usuario = this.usuarioProvider.getLogado(servicoRequisitado.email).subscribe(val => {
+                    let usuarioPaga: any;
+                    usuarioPaga = val[0];
+
+                    // console.log("email: "+usuarioPaga.email);
+                    // console.log("saldo: "+usuarioPaga.saldo)
+                    // console.log("dentro PrecoServico: " +servicoRequisitado.valorFinal)
+
+                    if(usuarioPaga.saldo >= servicoRequisitado.valorFinal){
+                      console.log("Efetua pagamento")
+                    } else {
+                      console.log("Abrir API para pagamento")
+                    }
+
+                    usuario.unsubscribe();
+                  });
+                  
                   //tela de avaliacao de contraparte
                 }
 
@@ -122,9 +131,8 @@ export class ServicoSingularPage {
 
             }
           }]
-      })
+            })
       AlertPedindo.present();
-
     }else{
       let AlertOferecendo = this.alertController.create({
         title: "Oferecendo",
@@ -138,15 +146,32 @@ export class ServicoSingularPage {
             text: "Aceitar",
             handler: () => {
 
-              let finalizarOferecimento = this.servicoProvider.getServicoFim(servico.email).subscribe(res => {
+              let finalizarOferecimento = this.servicoProvider.getServicoFim(servico.key).subscribe(res => {
                 let servicoOferecido: any;
-                servicoOferecido = res[0];
+                servicoOferecido = res;
                 
                 this.servicoProvider.oferecedorFinaliza(servico);
 
                 if(servicoOferecido.requisitorFinalizou){
                   console.log("O requisitor ja finalizou");
                   //enviar o saldo para o oferecedor de servico
+                  let usuario = this.usuarioProvider.getLogado(servicoOferecido.email).subscribe(val => {
+                    let usuarioPaga: any;
+                    usuarioPaga = val[0];
+
+                    // console.log("email: "+usuarioPaga.email);
+                    // console.log("saldo: "+usuarioPaga.saldo)
+                    // console.log("dentro PrecoServico: " +servicoRequisitado.valorFinal)
+                    
+                    if(usuarioPaga.saldo >= servicoOferecido.valorFinal){
+                      console.log("Efetua pagamento")
+                    } else {
+                      console.log("Abrir API para pagamento")
+                    }
+
+                    usuario.unsubscribe();
+                  });
+
                   //tela de avaliacao de contraparte
                 }
 
@@ -156,10 +181,7 @@ export class ServicoSingularPage {
             }
           }]
       })
-
       AlertOferecendo.present();
-
-
     }
 
   }

@@ -20,14 +20,12 @@ export class ServicoProvider {
       })
   }
 
-  getServicoFim(email){
-    return this.db.list(this.PATH, ref => ref.orderByChild("email").equalTo(email))
+  getServicoFim(key){
+    return this.db.object(this.PATH + key)
       .snapshotChanges()
-      .map(changes => {
-        return changes.map(s => ({
-          key: s.key, ...s.payload.val()
-        }));
-      })
+      .map(s => {
+          return { key: s.key, ...s.payload.val() }
+        });
   }
 
   getAllSub(subcategoriaServ) { //faz uma lista de todos os objetos salvos no firebase no caminho 'PATH'
