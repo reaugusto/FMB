@@ -112,13 +112,9 @@ export class ServicoSingularPage {
                     let usuarioPaga: any;
                     usuarioPaga = val[0];
 
-                    // console.log("email: "+usuarioPaga.email);
-                    // console.log("saldo: "+usuarioPaga.saldo)
-                    // console.log("dentro PrecoServico: " +servicoRequisitado.valorFinal)
-
                     if(usuarioPaga.saldo >= servicoRequisitado.valorFinal){
                       console.log("Efetua pagamento")
-                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoRequisitado.valorFinal);
+                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoRequisitado);
                       //fazer a tela do servico sumir apos pagamento efetuado
                     } else {
                       console.log("Abrir API para pagamento")
@@ -163,14 +159,10 @@ export class ServicoSingularPage {
                     let usuarioPaga: any;
                     usuarioPaga = val[0];
 
-                    // console.log("email: "+usuarioPaga.email);
-                    // console.log("saldo: "+usuarioPaga.saldo)
-                    // console.log("dentro PrecoServico: " +servicoRequisitado.valorFinal)
-                    
                     if(usuarioPaga.saldo >= servicoOferecido.valorFinal){
                       console.log("Efetua pagamento")
-                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido.valorFinal);
-                      //fazer a tela do servico sumir apos pagamento efetuado
+                      this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido);
+                      //fazer a tela do servico sumir apos pagamento efetuado (this.pop())
                     } else {
                       console.log("Abrir API para pagamento")
                     }

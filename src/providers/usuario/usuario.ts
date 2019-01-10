@@ -79,11 +79,13 @@ export class UsuarioProvider {
   });
   }
   
-  efetuarPagamento(usuario, valor){
-    let saldoFinal = usuario.saldo - valor;
+  //atualiza saldo do pagante
+  efetuarPagamento(usuario, servico){
+    console.log(servico.emailPropositor)
+    let saldoFinal = usuario.saldo - servico.valorFinal;
     saldoFinal = Math.round(saldoFinal*100) / 100;
 
-    return new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       this.db.list(this.PATH)
         .update(usuario.key, {
           saldo: saldoFinal
@@ -91,6 +93,26 @@ export class UsuarioProvider {
         .then(() => resolve())
         .catch((e) => reject(e));
   });
+
+  //atualiza saldo do recebedor
+    let recebedor = this.getLogado(servico.emailPropositor).subscribe(res =>{
+      let usuarioRecebedor:any;
+      usuarioRecebedor = res[0];
+      let saldoFinalRecebedor = usuarioRecebedor.saldo + servico.valorFinal;
+      saldoFinalRecebedor = Math.round(saldoFinalRecebedor*100) / 100;
+      
+      new Promise((resolve, reject) => {
+        this.db.list(this.PATH)
+          .update(usuarioRecebedor.key, {
+            saldo: saldoFinalRecebedor
+          })
+          .then(() => resolve())
+          .catch((e) => reject(e));
+      });
+
+      recebedor.unsubscribe();
+    })
+    
   }
 
   remove(key: string){//apaga do banco
