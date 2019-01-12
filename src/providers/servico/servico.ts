@@ -115,6 +115,29 @@ export class ServicoProvider {
     });
   }
 
+  move(servicoFinalizado){
+    //cria um novo objeto em outro caminho
+    let caminhoFinalizados = 'servicosFinalizados/';
+
+    new Promise((resolve) => {
+        this.db.list(caminhoFinalizados)
+          .set(servicoFinalizado.key, {
+            categoria: servicoFinalizado.categoria,
+            detalhes: servicoFinalizado.detalhes,
+            orcamento: parseFloat(servicoFinalizado.orcamento),
+            tipo: servicoFinalizado.tipo,
+            titulo: servicoFinalizado.titulo,
+            email: servicoFinalizado.email,
+            id_proposta: servicoFinalizado.id_proposta,
+            emailPropositor: servicoFinalizado.emailPropositor,
+            valorFinal: servicoFinalizado.valorFinal
+          })
+          .then(() => resolve());
+    });
+
+    //remove o original de onde estava
+    this.remove(servicoFinalizado.key);
+  }
 
 
 

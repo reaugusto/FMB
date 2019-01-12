@@ -115,7 +115,10 @@ export class ServicoSingularPage {
                     if(usuarioPaga.saldo >= servicoRequisitado.valorFinal){
                       console.log("Efetua pagamento")
                       this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoRequisitado);
-                      //fazer a tela do servico sumir apos pagamento efetuado
+                      //mover servico para servicos finalizados
+                      this.servicoProvider.move(servicoRequisitado);
+                      this.navCtrl.pop();
+                      
                     } else {
                       console.log("Abrir API para pagamento")
                     }
@@ -162,7 +165,10 @@ export class ServicoSingularPage {
                     if(usuarioPaga.saldo >= servicoOferecido.valorFinal){
                       console.log("Efetua pagamento")
                       this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido);
-                      //fazer a tela do servico sumir apos pagamento efetuado (this.pop())
+                      //mover servico para servicos finalizados
+                      this.servicoProvider.move(servicoOferecido);
+                      this.navCtrl.pop();
+                      
                     } else {
                       console.log("Abrir API para pagamento")
                     }

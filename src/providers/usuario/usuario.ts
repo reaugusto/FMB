@@ -79,8 +79,10 @@ export class UsuarioProvider {
   });
   }
   
-  //atualiza saldo do pagante
+  
   efetuarPagamento(usuario, servico){
+    
+    //atualiza saldo do pagante
     console.log(servico.emailPropositor)
     let saldoFinal = usuario.saldo - servico.valorFinal;
     saldoFinal = Math.round(saldoFinal*100) / 100;
