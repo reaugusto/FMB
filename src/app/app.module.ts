@@ -16,6 +16,8 @@ import { ServicoSingularPage } from '../pages/servico-singular/servico-singular'
 import { FazerpropostaPage } from '../pages/fazerproposta/fazerproposta'
 import { PropostasMeuServicoPage } from '../pages/propostas-meu-servico/propostas-meu-servico'
 import { RoomPage } from '../pages/room/room'
+import { AvaliarPage } from '../pages/avaliar/avaliar'
+import { IonRatingComponent } from '../components/ion-rating/ion-rating'
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -49,7 +51,9 @@ import { MsgsProvider } from '../providers/msgs/msgs';
     ServicoSingularPage,
     FazerpropostaPage,
     PropostasMeuServicoPage,
-    RoomPage
+    RoomPage,
+    AvaliarPage,
+    IonRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import { MsgsProvider } from '../providers/msgs/msgs';
     ServicoSingularPage,
     FazerpropostaPage,
     PropostasMeuServicoPage,
-    RoomPage
+    RoomPage,
+    AvaliarPage
   ],
   providers: [
     StatusBar,

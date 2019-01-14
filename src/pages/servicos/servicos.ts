@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CadastraservicoPage } from '../cadastraservico/cadastraservico';
 import { MostrarservicosPage } from '../mostrarservicos/mostrarservicos';
+import { AvaliarPage } from '../avaliar/avaliar';
 
 @Component({
   selector: 'page-servicos',
@@ -19,5 +20,9 @@ export class ServicosPage {
 
   cadastraServico(){
     this.navCtrl.push(CadastraservicoPage);
+  }
+
+  avaliar(){
+    this.navCtrl.push(AvaliarPage);
   }
 }
