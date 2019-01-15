@@ -52,7 +52,8 @@ export class UsuarioProvider {
           cpf: usuario.cpf,
           nome: usuario.nome,
           sobrenome: usuario.sobrenome,
-          avaliacao: usuario.avaliacao,
+          somaAvaliacoes: 0,
+          numAvaliacoes: 0,
           cep: usuario.cep,
           numero: usuario.numero,
           email: usuario.email,
@@ -78,7 +79,6 @@ export class UsuarioProvider {
         .catch((e) => reject(e));
   });
   }
-  
   
   efetuarPagamento(usuario, servico){
     
@@ -115,6 +115,33 @@ export class UsuarioProvider {
       recebedor.unsubscribe();
     })
     
+  }
+
+  avaliar(avaliacao, email){
+    let y = this.getLogado(email).subscribe(res => {
+      let user;
+      user = res[0];
+
+      let somaAvaliacoes = user.somaAvaliacoes + avaliacao;
+      let numAvaliacoes = user.numAvaliacoes + 1;
+
+      new Promise((resolve, reject) => {
+        this.db.list(this.PATH)
+          .update(user.key, {
+            somaAvaliacoes: somaAvaliacoes,
+            numAvaliacoes: numAvaliacoes,
+          })
+          .then(() => resolve())
+          .catch((e) => reject(e));
+      });
+
+
+      console.log(avaliacao);
+      console.log(user);
+
+
+      y.unsubscribe();
+    });
   }
 
   remove(key: string){//apaga do banco
