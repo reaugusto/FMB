@@ -98,14 +98,12 @@ export class PropostaProvider {
       });
   }
 
-  removeUponAccept(proposta: any , servico: any){
+  removeUponAccept(servico: any){
     let todasPropostas = this.getPropostasServicos(servico.key);
     
       todasPropostas.forEach(val => {
         for (let i=0; i<val.length ;i++){
-          if(val[i].key !== proposta){
             this.remove(val[i].key);
-          }
         }
       });
   }

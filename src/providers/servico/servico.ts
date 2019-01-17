@@ -108,7 +108,8 @@ export class ServicoProvider {
           .update(servico.key, {
             id_proposta: proposta.key,
             emailPropositor: proposta.email,
-            valorFinal: proposta.valor
+            valorFinal: proposta.valor,
+            tempo_entrega: proposta.tempo_entrega
           })
           .then(() => resolve())
           .catch((e) => reject(e));
@@ -130,7 +131,8 @@ export class ServicoProvider {
             email: servicoFinalizado.email,
             id_proposta: servicoFinalizado.id_proposta,
             emailPropositor: servicoFinalizado.emailPropositor,
-            valorFinal: servicoFinalizado.valorFinal
+            valorFinal: servicoFinalizado.valorFinal,
+            tempo_entrega: servicoFinalizado.tempo_entrega
           })
           .then(() => resolve());
     });
