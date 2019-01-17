@@ -6,6 +6,7 @@ import { FazerpropostaPage } from '../fazerproposta/fazerproposta';
 import * as firebase from 'Firebase';
 import { SessionProvider } from '../../providers/session/session';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { AvaliarPage } from '../avaliar/avaliar';
 /**
  * Generated class for the ServicoSingularPage page.
  *
@@ -59,6 +60,25 @@ export class ServicoSingularPage {
       this.fimServico = true;
     }
 
+    if (this.servico.email === this.email){
+      let finalizarRequisicao = this.servicoProvider.getServicoFim(this.servico.key).subscribe(res => {
+        let servicoRequisitado: any;
+        servicoRequisitado = res;
+        if(servicoRequisitado.requisitorFinalizou){
+          this.fimServico = false;
+        }
+        finalizarRequisicao.unsubscribe();
+      });
+    } else {
+      let finalizarRequisicao = this.servicoProvider.getServicoFim(this.servico.key).subscribe(res => {
+        let servicoRequisitado: any;
+        servicoRequisitado = res;
+        if(servicoRequisitado.oferecedorFinalizou){
+          this.fimServico = false;
+        }
+        finalizarRequisicao.unsubscribe();
+      });
+    }
 
 
 
@@ -117,7 +137,7 @@ export class ServicoSingularPage {
                       this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoRequisitado);
                       //mover servico para servicos finalizados
                       this.servicoProvider.move(servicoRequisitado);
-                      this.navCtrl.pop();
+                      
                       
                     } else {
                       console.log("Abrir API para pagamento")
@@ -126,12 +146,15 @@ export class ServicoSingularPage {
                     usuario.unsubscribe();
                   });
                   
-                  //tela de avaliacao de contraparte
+                  
                 }
+                  //tela de avaliacao de contraparte (oferecedor)
+                  let email = servico.emailPropositor;
+                  this.navCtrl.push(AvaliarPage, {email});
 
                 finalizarRequisicao.unsubscribe();
               });
-
+              this.navCtrl.pop();
             }
           }]
             })
@@ -167,7 +190,7 @@ export class ServicoSingularPage {
                       this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido);
                       //mover servico para servicos finalizados
                       this.servicoProvider.move(servicoOferecido);
-                      this.navCtrl.pop();
+                      
                       
                     } else {
                       console.log("Abrir API para pagamento")
@@ -175,19 +198,21 @@ export class ServicoSingularPage {
 
                     usuario.unsubscribe();
                   });
-
-                  //tela de avaliacao de contraparte
-                }
+                 }
+                  //tela de avaliacao de contraparte (requisitor)
+                  let email = servico.email; 
+                  this.navCtrl.push(AvaliarPage, {email});
 
                 finalizarOferecimento.unsubscribe();
               });
-  
+              
+              this.navCtrl.pop();
             }
           }]
       })
       AlertOferecendo.present();
     }
-
+    
   }
 
 }

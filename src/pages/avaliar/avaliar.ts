@@ -16,11 +16,11 @@ import { SessionProvider } from '../../providers/session/session';
   templateUrl: 'avaliar.html',
 })
 export class AvaliarPage {
-
+  email: string;
   avaliacao: number = 3;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private usuarioProvider: UsuarioProvider,
-    private sessionProvider: SessionProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private usuarioProvider: UsuarioProvider) {
+      this.email = this.navParams.get('email');
   }
 
   ionViewDidLoad() {
@@ -32,9 +32,8 @@ export class AvaliarPage {
   }
 
   uploadVal(){
-    console.log(this.avaliacao);
-    let email = this.sessionProvider.resgataEmail();
-    this.usuarioProvider.avaliar(this.avaliacao, email);
+    this.usuarioProvider.avaliar(this.avaliacao, this.email);
+    this.navCtrl.pop();
   }
 
 }

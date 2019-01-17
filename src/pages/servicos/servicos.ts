@@ -22,7 +22,4 @@ export class ServicosPage {
     this.navCtrl.push(CadastraservicoPage);
   }
 
-  avaliar(){
-    this.navCtrl.push(AvaliarPage);
-  }
 }
