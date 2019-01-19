@@ -29,6 +29,30 @@ export class MsgsProvider {
       })
   }
 
+  getChatsServico(roomname){
+    return this.db.list(this.PATH, ref => ref.orderByChild("roomname").equalTo(roomname))
+    .snapshotChanges()
+    .map(changes => {
+      return changes.map(s => ({
+        key: s.key, ...s.payload.val()
+      }));
+    })
+  }
+
+  removeAoFinalizar(roomname){
+    let roomMsgs = this.getChatsServico(roomname);
+
+    roomMsgs.forEach(val => {
+      for (let i=0; i<val.length ;i++){
+          this.remove(val[i].key);
+      }
+    });
+  }
+
+  remove(key: any){//apaga do banco
+    return this.db.list(this.PATH).remove(key);
+  }
+
 
 
 }

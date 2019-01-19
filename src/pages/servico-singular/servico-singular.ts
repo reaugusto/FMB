@@ -26,7 +26,8 @@ export class ServicoSingularPage {
   fimServico: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private servicoProvider: ServicoProvider,
-    private session: SessionProvider, private alertController: AlertController, private usuarioProvider: UsuarioProvider) {
+    private session: SessionProvider, private alertController: AlertController, private usuarioProvider: UsuarioProvider,
+    private messagesProvider: MsgsProvider) {
     this.servico = this.navParams.get('servico');
 
     console.log(this.servico);
@@ -138,6 +139,8 @@ export class ServicoSingularPage {
                       //mover servico para servicos finalizados
                       this.servicoProvider.move(servicoRequisitado);
                       
+                      //apaga mensagens relativas ao servico
+                      this.messagesProvider.removeAoFinalizar(servicoRequisitado.detalhes);
                       
                     } else {
                       console.log("Abrir API para pagamento")
@@ -190,6 +193,9 @@ export class ServicoSingularPage {
                       this.usuarioProvider.efetuarPagamento(usuarioPaga, servicoOferecido);
                       //mover servico para servicos finalizados
                       this.servicoProvider.move(servicoOferecido);
+
+                      //apaga mensagens relativas ao servico
+                      this.messagesProvider.removeAoFinalizar(servicoOferecido.detalhes);
                       
                       
                     } else {
