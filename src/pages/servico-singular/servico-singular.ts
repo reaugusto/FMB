@@ -95,12 +95,8 @@ export class ServicoSingularPage {
 
   addChat(servico: any) {
 
-    let newData = firebase.database().ref('chatrooms/').push();
-    newData.set({
-      roomname: servico.detalhes,
-      user1: servico.email,
-      user2: this.email
-    });
+    this.messagesProvider.newChat(servico, this.email);
+
   }
 
   finalizarServico(servico: any) {
