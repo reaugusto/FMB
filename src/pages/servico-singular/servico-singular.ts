@@ -7,6 +7,8 @@ import * as firebase from 'Firebase';
 import { SessionProvider } from '../../providers/session/session';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AvaliarPage } from '../avaliar/avaliar';
+import { MensagensPage } from '../mensagens/mensagens';
+import { RoomPage } from '../room/room';
 /**
  * Generated class for the ServicoSingularPage page.
  *
@@ -24,6 +26,7 @@ export class ServicoSingularPage {
   email: any = this.session.resgataEmail()
   isenabled: any;
   fimServico: any;
+  chatConectado: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private servicoProvider: ServicoProvider,
     private session: SessionProvider, private alertController: AlertController, private usuarioProvider: UsuarioProvider,
@@ -81,8 +84,25 @@ export class ServicoSingularPage {
       });
     }
 
+    //validar se o botao que devera aparecer é o de criar chat ou redirecionar para chat ja existente
+    let variavel = this.messagesProvider.getOutrosChats(this.email).subscribe(res =>{
+      let chat;
+      for(let i = 0; i< res.length; i++){
+        chat = res[i];
+        if(chat.roomname === this.servico.titulo && chat.user2 === this.email){
+          this.chatConectado = true;
+        }
+      }
+      variavel.unsubscribe();
+    })
 
 
+  }
+
+  joinRoom(){
+    console.log("Ir para o chat");
+    //redirecionar para o chat 
+    //  this.navCtrl.push(RoomPage, {});
   }
 
   fazerProposta() {
@@ -94,9 +114,8 @@ export class ServicoSingularPage {
   }
 
   addChat(servico: any) {
-
     this.messagesProvider.newChat(servico, this.email);
-
+    this.navCtrl.pop();
   }
 
   finalizarServico(servico: any) {

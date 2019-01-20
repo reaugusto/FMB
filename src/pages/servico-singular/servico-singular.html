@@ -29,9 +29,15 @@
     Fazer proposta
   </button><br>
 
-  <button ion-button color="primary" (click)="addChat(servico)" [hidden]="!isenabled">
+  <button ion-button color="primary" (click)="addChat(servico)" [hidden]="!isenabled" [hidden]="chatConectado">
     <ion-icon name="text"></ion-icon>
     Enviar mensagem
+  </button>
+
+  <!-- Apenas aparece quando o usuario ja possui chat aberto com o outro usuario -->
+  <button ion-button color="primary" (click)="joinRoom()" [hidden]="!chatConectado">
+    <ion-icon name="text"></ion-icon>
+    Conversa
   </button>
 
   <button ion-button color="primary" (click)="finalizarServico(servico)" [hidden]="!fimServico">

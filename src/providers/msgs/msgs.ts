@@ -32,7 +32,7 @@ export class MsgsProvider {
   newChat(servico, email) {
     return new Promise((resolve, reject) => {
       this.db.list(this.PATH)
-        .push({ //id_proposta será a key gerada
+        .push({
           roomname: servico.titulo,
           user1: servico.email,
           user2: email
