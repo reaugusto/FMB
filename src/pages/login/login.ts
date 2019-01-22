@@ -11,6 +11,7 @@ import { SessionProvider } from '../../providers/session/session';
 import { AtualizaperfilPage } from '../atualizaperfil/atualizaperfil';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { Observable } from 'rxjs';
+import { PasswordresetPage } from '../passwordreset/passwordreset';
 
 @IonicPage()
 @Component({
@@ -33,6 +34,10 @@ export class LoginPage {
 
   cadastrar(){
     this.navCtrl.push(CadastrarPage);
+  }
+
+  passwordReset(){
+    this.navCtrl.push(PasswordresetPage);
   }
 
   signIn(){

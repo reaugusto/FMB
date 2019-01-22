@@ -114,6 +114,8 @@ export class ServicoSingularPage {
             text: "Aceitar",
             handler: () => {
               
+              //requisitor do servico que pagara por ele
+
               let finalizarRequisicao = this.servicoProvider.getServicoFim(servico.key).subscribe(res => {
                 let servicoRequisitado: any;
                 servicoRequisitado = res;
@@ -170,6 +172,8 @@ export class ServicoSingularPage {
           {
             text: "Aceitar",
             handler: () => {
+
+              //Oferecedor do servico que recebera o saldo
 
               let finalizarOferecimento = this.servicoProvider.getServicoFim(servico.key).subscribe(res => {
                 let servicoOferecido: any;

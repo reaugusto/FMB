@@ -18,6 +18,7 @@ import { PropostasMeuServicoPage } from '../pages/propostas-meu-servico/proposta
 import { RoomPage } from '../pages/room/room'
 import { AvaliarPage } from '../pages/avaliar/avaliar'
 import { IonRatingComponent } from '../components/ion-rating/ion-rating'
+import { PasswordresetPage } from '../pages/passwordreset/passwordreset';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -34,6 +35,7 @@ import { SessionProvider } from '../providers/session/session';
 import { AtualizaperfilPage } from '../pages/atualizaperfil/atualizaperfil';
 import { from } from 'rxjs';
 import { MsgsProvider } from '../providers/msgs/msgs';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { MsgsProvider } from '../providers/msgs/msgs';
     PropostasMeuServicoPage,
     RoomPage,
     AvaliarPage,
-    IonRatingComponent
+    IonRatingComponent,
+    PasswordresetPage
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { MsgsProvider } from '../providers/msgs/msgs';
     FazerpropostaPage,
     PropostasMeuServicoPage,
     RoomPage,
-    AvaliarPage
+    AvaliarPage,
+    PasswordresetPage
   ],
   providers: [
     StatusBar,

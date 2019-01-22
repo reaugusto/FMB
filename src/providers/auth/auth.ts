@@ -29,4 +29,14 @@ export class AuthProvider {
     return this.angularFireAuth.auth.signOut();
   }
 
+  passwordreset(email){
+    return new Promise((resolve,reject) => {
+      this.angularFireAuth.auth.sendPasswordResetEmail(email).then(()=> {
+        resolve({success : true});
+      }).catch((err) => {
+        reject(err);
+      })
+    });
+  }
+
 }
