@@ -1,10 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Meus Serviços</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <div class="profile-image">
+    {{ imgurl }}
+  </div>
+
+  <button ion-button (click)="chooseImage()">
+    Alterar Imagem
+  </button>
 
     <button ion-button block color="primary" (click)="atualizarPerfil()">
         Atualizar Perfil

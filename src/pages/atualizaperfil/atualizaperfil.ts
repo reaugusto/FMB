@@ -54,11 +54,11 @@ export class AtualizaperfilPage {
     if (this.form.valid) {
       this.provider.save(this.form.value)
         .then(() => {
-          this.toast.create({ message: 'Servico criado com sucesso', duration: 3000 }).present();
+          this.toast.create({ message: 'Perfil atualizado criado com sucesso', duration: 3000 }).present();
           this.navCtrl.pop();
         })
         .catch((e) => {
-          this.toast.create({ message: 'Erro ao tentar criar servico', duration: 3000 }).present();
+          this.toast.create({ message: 'Erro ao tentar criar atualizar perfil', duration: 3000 }).present();
           console.error(e);
         });
     }
